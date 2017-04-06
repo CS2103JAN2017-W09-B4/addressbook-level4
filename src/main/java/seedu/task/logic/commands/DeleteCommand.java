@@ -14,11 +14,16 @@ import seedu.task.model.task.UniqueTaskList.TaskNotFoundException;
 public class DeleteCommand extends Command {
 
     public static final String COMMAND_WORD = "delete";
+    //@@author A0139322L
+    public static final String TO_INDICATOR = "-";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the task identified by the index number used in the last task listing.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+            + ": Deletes the task identified by the index number used in the last task listing,\n"
+            + "or, if two index numbers are provided, all tasks between the two index numbers used\n"
+            + "in the last task listing.\n"
+            + "Parameters: INDEX (must be a positive integer) [" + TO_INDICATOR + " SECOND_INDEX]\n"
+            + "Example: " + COMMAND_WORD + " 1\n"
+            + "or: " + COMMAND_WORD + " 1 " + TO_INDICATOR + " 5\n";
 
     public static final String MESSAGE_DELETE_TASK_SUCCESS = "Deleted Task: %1$s";
 

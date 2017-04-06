@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
@@ -52,6 +53,35 @@ public class ParserUtil {
         return Optional.of(Integer.parseInt(index));
 
     }
+
+    //@@author A0139322L
+    /**
+     * Returns a new List populated by the elements in the {@code command} if there are 2 positive unsigned
+     * integers in the command.
+     * Returns a List populated by {@code Optional.empty()} objects otherwise.
+     */
+    public static ArrayList<OptionalInt> parseIndexes(String command) {
+        String noSpaceCommand = command.replaceAll("\\s+", "");
+        String[] indexStrings = noSpaceCommand.split("-");
+        ArrayList<OptionalInt> indexes = new ArrayList<OptionalInt>(Arrays.asList(OptionalInt.empty(),
+                                                                                  OptionalInt.empty()));
+
+        if (indexStrings.length == 2) {
+            if (!StringUtil.isUnsignedInteger(indexStrings[0]) || !StringUtil.isUnsignedInteger(indexStrings[1])) {
+                return indexes;
+            } else {
+                OptionalInt index1 = OptionalInt.of(Integer.parseInt(indexStrings[0]));
+                OptionalInt index2 = OptionalInt.of(Integer.parseInt(indexStrings[1]));
+                indexes.set(0, index1);
+                indexes.set(1, index2);
+            }
+        } else {
+            return indexes;
+        }
+
+        return indexes;
+    }
+    //@@author
 
     /**
      * Returns a new Set populated by all elements in the given list of strings
