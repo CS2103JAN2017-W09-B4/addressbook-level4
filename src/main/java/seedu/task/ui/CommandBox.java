@@ -24,6 +24,7 @@ public class CommandBox extends UiPart<Region> {
     public static final String ERROR_STYLE_CLASS = "error";
     public static final String BLANK_TEXT = "";
     private CommandList commandList;
+    private KeyCode prevKey;
 
     private final Logic logic;
 
@@ -35,6 +36,7 @@ public class CommandBox extends UiPart<Region> {
         this.commandList = CommandList.getInstance();
         this.logic = logic;
         addToPlaceholder(commandBoxPlaceholder);
+        prevKey = null;
     }
 
     private void addToPlaceholder(AnchorPane placeHolderPane) {
@@ -86,22 +88,29 @@ public class CommandBox extends UiPart<Region> {
         if (keyCode == KeyCode.UP || keyCode == KeyCode.KP_UP) {
             //Don't let the up key move the caret to the left
             key.consume();
-            goToPreviousCommand();
+            goToPreviousCommand(prevKey == KeyCode.DOWN);
         } else if (keyCode == KeyCode.DOWN || keyCode == KeyCode.KP_DOWN) {
             //Don't let the down key move the caret to the right
             key.consume();
-            goToNextCommand();
+            goToNextCommand(prevKey == KeyCode.UP);
         }
+        prevKey = keyCode;
     }
 
-    private void goToPreviousCommand() {
+    private void goToPreviousCommand(boolean isDifferentDirection) {
         String previousCommand = getPreviousCommand();
+        if (isDifferentDirection) { //Get one more command before if previously getting a newer command
+            previousCommand = getPreviousCommand();
+        }
         commandTextField.replaceText(0, commandTextField.getLength(), previousCommand);
         commandTextField.end(); //Move caret to the end of the command
     }
 
-    private void goToNextCommand() {
+    private void goToNextCommand(boolean isDifferentDirection) {
         String nextCommand = getNextCommand();
+        if (isDifferentDirection) { //Get one more command after if previously getting an older command
+            nextCommand = getNextCommand();
+        }
         commandTextField.replaceText(0, commandTextField.getLength(), nextCommand);
         commandTextField.end(); //Move caret to the end of the command
     }
