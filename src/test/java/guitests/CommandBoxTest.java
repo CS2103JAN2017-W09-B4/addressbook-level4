@@ -56,4 +56,24 @@ public class CommandBoxTest extends TaskManagerGuiTest {
         assertEquals(defaultStyleOfCommandBox, commandBox.getStyleClass());
     }
 
+    //@@author A0141928B
+    @Test
+    public void commandBox_useCommandList() {
+        //insert some valid commands
+        commandBox.runCommand("add task1");
+        commandBox.runCommand("complete 1");
+        //get previous commands
+        commandBox.pressUpArrowKey();
+        assertEquals("complete 1", commandBox.getCommandInput());
+        commandBox.pressUpArrowKey();
+        assertEquals("add task1", commandBox.getCommandInput());
+        //try to get an older command where there are no older commands
+        commandBox.pressUpArrowKey();
+        assertEquals("add task1", commandBox.getCommandInput());
+        //get next command
+        commandBox.pressDownArrowKey();
+        assertEquals("complete 1", commandBox.getCommandInput());
+        //empty command box when there are no commands more recent
+        commandBox.pressDownArrowKey();
+    }
 }

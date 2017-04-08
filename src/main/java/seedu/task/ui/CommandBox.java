@@ -85,11 +85,11 @@ public class CommandBox extends UiPart<Region> {
     @FXML
     private void handleKeyPressed(KeyEvent key) {
         KeyCode keyCode = key.getCode();
-        if (keyCode == KeyCode.UP || keyCode == KeyCode.KP_UP) {
+        if (keyCode == KeyCode.UP) {
             //Don't let the up key move the caret to the left
             key.consume();
             goToPreviousCommand(prevKey == KeyCode.DOWN);
-        } else if (keyCode == KeyCode.DOWN || keyCode == KeyCode.KP_DOWN) {
+        } else if (keyCode == KeyCode.DOWN) {
             //Don't let the down key move the caret to the right
             key.consume();
             goToNextCommand(prevKey == KeyCode.UP);
