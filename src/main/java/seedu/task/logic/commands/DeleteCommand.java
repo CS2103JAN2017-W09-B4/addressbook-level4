@@ -29,9 +29,11 @@ public class DeleteCommand extends Command {
     public static final String MESSAGE_DELETE_TASK_SUCCESS = "Deleted Task: %1$s";
 
     public final int targetIndex;
+    public final int times;
 
-    public DeleteCommand(int targetIndex) {
+    public DeleteCommand(int targetIndex, int times) {
         this.targetIndex = targetIndex;
+        this.times = times;
     }
 
 
@@ -39,34 +41,70 @@ public class DeleteCommand extends Command {
     public CommandResult execute() throws CommandException {
 
         UnmodifiableObservableList<ReadOnlyTask> lastShownList = model.getFilteredTaskList();
+        String SubsetDeleted = "Deleted Tasks:\n";
 
-        if (lastShownList.size() < targetIndex) {
-            throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
-        }
-
-        ReadOnlyTask taskToDelete = lastShownList.get(targetIndex - 1);
-        //@@author A0139161J
-        Task task = new Task (taskToDelete);
-        task.setParserInfo("delete");
-        task.setIndex(targetIndex - 1);
-        try {
-            GlobalStack gStack = GlobalStack.getInstance();
-            gStack.getUndoStack().push(task); // task that got deleted, to be restored
-            /**Debugging purpose
-             * System.out.println("Parser Info : " + task.getParserInfo());
-             * System.out.println("Index = " + index);
-             * System.out.println("Task added to stack : " + gStack.getUndoStack().peek().toString());
-            */
-            model.deleteTask(taskToDelete);
-            /**Debugging purpose
-             * gStack.printStack();
-             */
+        //@@author A0139322L
+        if (times == 0) {
         //@@author
-        } catch (TaskNotFoundException pnfe) {
-            assert false : "The target task cannot be missing";
+            if (lastShownList.size() < targetIndex) {
+                throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
+            }
+
+            ReadOnlyTask taskToDelete = lastShownList.get(targetIndex - 1);
+            //@@author A0139161J
+            Task task = new Task (taskToDelete);
+            task.setParserInfo("delete");
+            task.setIndex(targetIndex - 1);
+            try {
+                GlobalStack gStack = GlobalStack.getInstance();
+                gStack.getUndoStack().push(task); // task that got deleted, to be restored
+                /**Debugging purpose
+                 * System.out.println("Parser Info : " + task.getParserInfo());
+                 * System.out.println("Index = " + index);
+                 * System.out.println("Task added to stack : " + gStack.getUndoStack().peek().toString());
+                 */
+                model.deleteTask(taskToDelete);
+                /**Debugging purpose
+                 * gStack.printStack();
+                 */
+                //@@author
+
+            } catch (TaskNotFoundException pnfe) {
+                assert false : "The target task cannot be missing";
+            }
+
+            return new CommandResult(String.format(MESSAGE_DELETE_TASK_SUCCESS, taskToDelete));
+        //@@author A0139322L
+        } else {
+            if (lastShownList.size() < targetIndex || lastShownList.size() < (targetIndex + times - 1)) {
+                throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
+            }
+
+            GlobalStack gStack = GlobalStack.getInstance();
+            for (int i = 0; i < times; i++) {
+                ReadOnlyTask taskToDelete = lastShownList.get(targetIndex - 1);
+
+                Task task = new Task(taskToDelete);
+                task.setParserInfo("delete");
+                task.setIndex(targetIndex - 1);
+                try {
+                    gStack.getUndoStack().push(task);
+
+                    model.deleteTask(taskToDelete);
+                    if (i == times - 1) {
+                        SubsetDeleted = SubsetDeleted + String.format("%1$s", taskToDelete);
+                    } else {
+                        SubsetDeleted = SubsetDeleted + String.format("%1$4s,\n", taskToDelete);
+                    }
+                } catch (TaskNotFoundException pnfe) {
+                    assert false : "The target task(s) cannot be missing";
+                }
+            }
+
+            gStack.getUndoStack().push(times);
+
+            return new CommandResult(SubsetDeleted);
         }
-
-        return new CommandResult(String.format(MESSAGE_DELETE_TASK_SUCCESS, taskToDelete));
     }
-
+        //@@author
 }

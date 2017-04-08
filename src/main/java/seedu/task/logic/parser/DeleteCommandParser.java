@@ -27,14 +27,16 @@ public class DeleteCommandParser {
                 return new IncorrectCommand(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
             }
-            return new DeleteCommand(indexes.get(1).getAsInt());
+
+            int times = indexes.get(1).getAsInt() - indexes.get(0).getAsInt() + 1;
+            return new DeleteCommand(indexes.get(0).getAsInt(), times);
         } else {
             Optional<Integer> index = ParserUtil.parseIndex(args);
             if (!index.isPresent()) {
                 return new IncorrectCommand(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
             }
-            return new DeleteCommand(index.get());
+            return new DeleteCommand(index.get(), 0);
         }
 
     }
