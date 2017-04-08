@@ -73,6 +73,12 @@ public class CommandBoxTest extends TaskManagerGuiTest {
         //get next command
         commandBox.pressDownArrowKey();
         assertEquals("complete 1", commandBox.getCommandInput());
+        //change directions from down to up
+        commandBox.pressUpArrowKey();
+        assertEquals("add task1", commandBox.getCommandInput());
+        //change direction from up to down
+        commandBox.pressDownArrowKey();
+        assertEquals("complete 1", commandBox.getCommandInput());
         //empty command box when there are no commands more recent
         commandBox.pressDownArrowKey();
     }
