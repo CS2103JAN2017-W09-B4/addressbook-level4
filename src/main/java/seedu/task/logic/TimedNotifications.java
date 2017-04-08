@@ -1,6 +1,7 @@
 package seedu.task.logic;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.Timer;
@@ -12,13 +13,16 @@ import seedu.task.model.task.Deadline;
 import seedu.task.model.task.ReadOnlyTask;
 
 //@@author A0141928B
-public class TimedEvent extends TimerTask {
+/**
+ * Creates a notification in the system tray
+ */
+public class TimedNotifications extends TimerTask {
     private String message;
     public Timer timer;
     private int period;
     public ObservableList<ReadOnlyTask> tasks;
 
-    public TimedEvent(ObservableList<ReadOnlyTask> tasks, int interval) {
+    public TimedNotifications(ObservableList<ReadOnlyTask> tasks, int interval) {
         this.tasks = tasks;
         this.period = interval;
     }
@@ -27,8 +31,13 @@ public class TimedEvent extends TimerTask {
         this.message = "";
 
         Date today = new Date();
-        String date1 = new SimpleDateFormat("dd-MMM-yy").format(today);
-        String date2 = new SimpleDateFormat("dd-MMM-yyyy").format(today);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(today);
+        calendar.add(calendar.HOUR_OF_DAY, 3); //Add 3 hours to current time
+
+        StringBuilder date = new StringBuilder(); //To build a string that matches the deadline format
+        date.append(new SimpleDateFormat("dd-MMM-yyyy").format(calendar.getTime()))
+                    .append(" @ ").append(new SimpleDateFormat("hh:mm").format(calendar.getTime()));
 
         Deadline deadline;
 
@@ -36,8 +45,8 @@ public class TimedEvent extends TimerTask {
         while (i.hasNext()) {
             ReadOnlyTask current = i.next();
             deadline = current.getDate();
-            if (deadline.value.equals(date1) || deadline.value.equals(date2)) {
-                this.message = current.getTaskName().toString();
+            if (deadline.value.equals(date.toString())) {
+                this.message = current.getTaskName().toString() + " is due in 3 hours";
                 break;
             }
         }
@@ -53,7 +62,7 @@ public class TimedEvent extends TimerTask {
         updateMessage();
         if (!message.isEmpty()) {
             NotificationUtil notification = new NotificationUtil();
-            notification.displayNotification(this.message + " is due today!");
+            notification.displayNotification(this.message);
         }
     }
 }
