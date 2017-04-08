@@ -408,13 +408,13 @@ Priority | As a ... | I want to ... | So that I can...
 
 ## Appendix B : Use Cases
 
-(For all use cases below, the **System** is the `doTASK` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `doTASK` and the **Actor** is the `user`, unless specified otherwise)
 
-#### Use case 1 : Add Task
+#### Use case 1 : Add task
 
 **MSS**
 
-1. User request to add a task
+1. User request to add a task, with all desired parameters (eg. deadline, tags, information)
 2. doTASK adds the task <br>
 Use case ends.
 
@@ -425,7 +425,7 @@ Use case ends.
 > 1a1. doTASK shows an error message <br>
   Use case resumes at step 1
 
-#### Use case 2 : Delete Task
+#### Use case 2 : Delete task
 
 **MSS**
 
@@ -439,48 +439,37 @@ Use case ends.
 
 2a. The list is empty
 
-> Use case ends
+> 2a1. doTASK shows an error message <br>
+  Use case ends
 
 3a. The given index is invalid
 
 > 3a1. doTASK shows an error message <br>
   Use case resumes at step 2
 
-#### Use case 3 : Prioritize a task
+#### Use case 3 : Delete subset of tasks
 
 **MSS**
 
-1. User requests to list down the tasks by priority
-2. doTASK shows a list of tasks in 2x2 matrix which are sorted in 4 different priorities
-Use case ends
+1. User requests to list tasks
+2. doTASK shows a list of tasks
+3. User requests to delete a range of tasks in the list
+4. doTASK deletes all tasks in the range
+Use case ends.
 
 **Extensions**
 
-1a. The list is empty
+2a. The list is empty
 
-> Use case ends
+> 2a1. doTASK shows an error message <br>
+  Use case ends
 
-#### Use case 4 : Tagging a task
+3a. The given indices are invalid
 
-**MSS**
+> 3a1. doTASK shows an error message <br>
+  Use case resumes at step 2
 
-1. User requests to list down the tasks by tags
-2. doTASK request the user for the name of the tag
-3. User input the name of the tag
-2. doTASK executes the command and list the task under the given tag
-Use case ends
-
-**Extensions**
-
-1a. The list is empty
-
-> Use case ends
-
-2a. The name of the tag does not exist
-
-> doTASK show an error message.
-
-#### Use case 5 : List commands
+#### Use case 4 : List commands
 
 **MSS**
 
@@ -488,15 +477,16 @@ Use case ends
 2. doTASK shows a list of basic commands <br>
 Use case ends.
 
-#### Use case 6 : Editing parameters of a specified task
+#### Use case 5 : Editing parameters of a specified task
 
 **MSS**
 
 1. User requests to get a list of tasks
 2. doTASK shows a list of tasks
 3. User requests to edit the parameters of a specified task
-4. doTASK edits the task <br>
-Use case ends.
+4. doTASK edits the task
+
+>Use case ends.
 
 **Extensions**
 
@@ -504,22 +494,36 @@ Use case ends.
 
 > Use case ends.
 
-3a. Specified parameters are wrong
+3a. Specified parameters are invalid
 
 > 3a1. doTASK shows an error message <br>
   Use case resumes at step 2
 
-#### Use case 7 : Searching for a task
+#### Use case 6 : Finding a task
 
 **MSS**
 
-1. User requests to search for a task
-2. doTASK shows a list of tasks related to the the keyword
+1. User requests to find a task
+2. doTASK shows a list of tasks related to the keyword, in its name or details
 Use case ends.
 
 **Extensions**
 
-2a. There no tasks related to the keyword
+2a. There are no tasks related to the keyword
+
+> Use case ends
+
+#### Use case 7 : Finding a task by tag
+
+**MSS**
+
+1. User requests to find tasks with a certain tag
+2. doTASK shows a list of tasks tagged with the tag
+Use case ends.
+
+**Extensions**
+
+2a. There are no tasks with the specified tag
 
 > Use case ends
 
@@ -544,26 +548,51 @@ Use case ends.
 **MSS**
 
 1. User requests to clear all the tasks
-2. doTASK clears the list of tasks
+2. doTASK clears the list of tasks <br>
 Use case ends.
 
-#### Use case 10 : Clearing a specified subset of tasks
-
-**MSS**
-
-1. User requests to search for the tasks related to the input
-2. doTASK shows the list of tasks related to the input
-3. User requests to clear the list of tasks
-4. doTASK clears the list of tasks
-Use case ends.
-
-#### Use case 11 : Find upcoming tasks
+#### Use case 10 : Find upcoming tasks
 
 **MSS**
 
 1. User requests to search for the upcoming tasks
-2. doTASK shows the list of task that is near to the dateline
+2. doTASK shows the list of task that is near to the dateline <br>
 Use case ends.
+
+#### Use case 11 : Undo previous commands
+
+**MSS**
+
+1. User requests to undo the previous command
+2. doTASK reverts the list to its state before the previous command <br>
+Use case ends.
+
+**Extensions**
+
+2a. No commands have been entered before `undo`
+
+> Use case ends
+
+2b. There are no commands left to `undo`
+
+> Use case ends
+
+#### Use case 12 : Redo previous `undo`
+
+**MSS**
+
+1. User requests to redo the previous `undo`
+2. doTASK reverts the list to its state before the previous `undo` <br>
+
+**Extensions**
+
+2a. No commands have been undone
+
+> Use case ends
+
+2b. There are no commands left to `redo`
+
+> Use case ends
 
 ## Appendix C : Non Functional Requirements
 
