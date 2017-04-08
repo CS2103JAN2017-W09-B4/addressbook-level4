@@ -84,13 +84,13 @@ public class CommandBox extends UiPart<Region> {
     private void handleKeyPressed(KeyEvent key) {
         KeyCode keyCode = key.getCode();
         if (keyCode == KeyCode.UP || keyCode == KeyCode.KP_UP) {
-            goToPreviousCommand();
             //Don't let the up key move the caret to the left
             key.consume();
+            goToPreviousCommand();
         } else if (keyCode == KeyCode.DOWN || keyCode == KeyCode.KP_DOWN) {
-            goToNextCommand();
             //Don't let the down key move the caret to the right
             key.consume();
+            goToNextCommand();
         }
     }
 

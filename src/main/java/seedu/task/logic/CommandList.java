@@ -4,6 +4,9 @@ import java.util.LinkedList;
 import java.util.ListIterator;
 
 //@@author A0141928B
+/**
+ * Stores all the previously executed commands into a list
+ */
 public class CommandList {
     private static CommandList instance;
     //List of commands in reverse chronological order (most recent command first)
