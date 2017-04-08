@@ -46,7 +46,7 @@ public class TimedNotifications extends TimerTask {
             ReadOnlyTask current = i.next();
             deadline = current.getDate();
             if (deadline.value.equals(date.toString())) {
-                this.message = current.getTaskName().toString() + " is due in 3 hours";
+                this.message = current.getTaskName().toString();
                 break;
             }
         }
@@ -62,7 +62,7 @@ public class TimedNotifications extends TimerTask {
         updateMessage();
         if (!message.isEmpty()) {
             NotificationUtil notification = new NotificationUtil();
-            notification.displayNotification(this.message);
+            notification.displayNotification(this.message + " is due in 3 hours");
         }
     }
 }
