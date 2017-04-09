@@ -72,7 +72,8 @@ Example:
 #### 3.2.2. Adds a task with `PRIORITY_LEVEL`. <br>
 Format: `add TASK_NAME [p/PRIORITY_LEVEL]`
   > * `PRIORITY_LEVEL` should be defined by integers 1 (high) to 4 (low).<br>
-  > * Tasks will be colour-coded based on its priority level.
+
+Tasks will be colour-coded based on its priority level.
   > <img src="images/priority_colours.png">
 
 Example:
@@ -225,22 +226,32 @@ Format: Down arrow key
 
 Saves the task manager data to the .xml file specified by you.<br>
 Format: `save PATH_TO_FILE/FILE_NAME.xml`
-> The path specified is relative to the directory that your `doTASK.jar` file is in.<br>
 > Your file name must have the extension `.xml`.<br>
-> Upon creating/deleting/editing a task, the task data will be automatically saved to the file specified by you.<br>
 > If you did not specify a path, the default path is `data/taskManager.xml`.<br>
-> Do not erase the saved data as it will result in a complete loss of data that cannot be recovered by the application itself.
+> Do not delete the saved xml file or modify it as it may result in a complete loss of data that cannot be recovered by the application itself.<br>
+> The path specified can either be a relative path or an absolute path.
+> * A relative path is relative to the directory that your `doTASK.jar` file is in.<br>
+> * An absolute path specifies the root directory, and usually includes the C:\ or D:\ drive.<br>
+>
+> Refer below for examples of relative and absolute paths.
 
 Examples:
 * `save todo/myTasks.xml`
+* `save C:\Users\jimlim\Documents\todo.xml`
 
 ## 4. FAQ
+
+**Q**: How do I save my data in doTASK?<br>
+**A**: Your data is automatically saved every time you do something that modifies it (e.g. adding, editing, deleting tasks). If you would like to save your data to a specific directory, use the [save command](#313-saving-the-task-manager-save).
 
 **Q**: How do I transfer my data to another computer?<br>
 **A**: Install the application in the other computer and overwrite the empty data file with the file <file_name.xml> that contains the data of your current doTASK manager.
 
-**Q**: Will I get reminded if the deadlines of tasks are nearing?<br>
-**A**: For tasks that are due in 24 hours, there will be a notification in the system tray reminding you of the task.
+**Q**: How do I load my data from an xml file to doTASK?<br>
+**A**: Save doTASK to any location you like using the [save command](#313-saving-the-task-manager-save). Locate the save file, and overwrite it with your own xml file. Restart doTASK, and your data should be loaded.
+
+**Q**: How will I know if the deadlines of tasks are nearing?<br>
+**A**: For tasks that are due soon, there will be a notification in the system tray reminding you of the task. The system tray notification will remind you of tasks that are due in **3 hours**.
 
 ## 5. Command Summary
 
