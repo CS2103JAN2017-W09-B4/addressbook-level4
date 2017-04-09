@@ -23,7 +23,7 @@ import seedu.task.commons.util.StringUtil;
 import seedu.task.logic.Logic;
 import seedu.task.logic.LogicManager;
 import seedu.task.logic.OverdueTimer;
-import seedu.task.logic.TimedEvent;
+import seedu.task.logic.TimedNotifications;
 import seedu.task.model.Model;
 import seedu.task.model.ModelManager;
 import seedu.task.model.ReadOnlyTaskManager;
@@ -42,6 +42,8 @@ public class MainApp extends Application {
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
     public static final Version VERSION = new Version(1, 0, 0, true);
+
+    public static final int ONE_MINUTE = 60000;
 
     protected Ui ui;
     protected Logic logic;
@@ -181,10 +183,10 @@ public class MainApp extends Application {
 
     //@@author A0141928B
     /**
-     * Initialise notifications
+     * Initialise notifications in system tray
      */
     public void initNotifications() {
-        TimedEvent event = new TimedEvent(model.getTaskManager().getTaskList(), 120000);
+        TimedNotifications event = new TimedNotifications(model.getTaskManager().getTaskList(), ONE_MINUTE);
         event.start();
     }
 
