@@ -133,10 +133,10 @@ Examples:
 * `edit i/4 n/Exercise`
 
 ### 3.5. Deleting a task: `delete`
-Deletes the specified task.<br>
+Deletes the specified task in the "doingTASKS" list.<br>
 Format: `delete INDEX_NUMBER`
 
-> The task labelled `INDEX_NUMBER` will be deleted from the list.<br>
+> The task labelled `INDEX_NUMBER` will be deleted from the "doingTASKS" list.<br>
 > `INDEX_NUMBER` of tasks is shown according to the current tab.
 
 Examples:
@@ -264,16 +264,10 @@ Examples:
 
 * **List All** : `list`
 
-* **Find** : `find`<br>
-	e.g. `find potato`
-
-* **Find a tag** : `findtag`<br>
-	e.g. `findtag Work`
-
 * **Edit** : `edit`<br>
 	e.g. `edit i/3 n/Buy a house`
 
-* **Delete** : `delete`<br>
+* **Delete an uncompleted task** : `delete`<br>
 	e.g. `delete 1`
 
 * **Complete a task** : `complete`<br>
@@ -285,11 +279,11 @@ Examples:
 * **Delete a completed task** : `deletecompleted`<br>
 	e.g. `deletecompleted 1`
 
-* **Checking progress/performance** : `progress NUMBER_OF_DAYS`<br>
-	e.g. `progress 7`
-
-* **Search for tasks** : `find KEYWORD`<br>
+* **Find tasks containing KEYWORD** : `find KEYWORD`<br>
 	e.g. `find potato`
+
+* **Find tasks related to tag** : `findtag`<br>
+	e.g. `findtag Work`
 
 * **Undo previous action** : `undo`<br>
 
