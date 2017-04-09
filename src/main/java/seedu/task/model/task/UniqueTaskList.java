@@ -1,5 +1,8 @@
 package seedu.task.model.task;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
@@ -34,7 +37,35 @@ public class UniqueTaskList implements Iterable<Task> {
                         .compareTo(task2.getTaskName().taskName.toLowerCase());
             }
         };
-        unsortedList.sort(nameComparator);
+
+        Comparator<Task> dateComparator = new Comparator<Task>() {
+            DateFormat df = new SimpleDateFormat("dd-MMM-yyyy @ HH:mm");
+            @Override
+            public int compare(Task task1, Task task2) {
+                String date1;
+                String date2;
+
+                if (task1.getDate().value.equals("")) {
+                    date1 = "15-Sep-9090 @ 23:55";
+                } else {
+                    date1 = task1.getDate().value;
+                }
+
+                if (task2.getDate().value.equals("")) {
+                    date2 = "15-Sep-9090 @ 23:55";
+                } else {
+                    date2 = task2.getDate().value;
+                }
+
+                try {
+                    return df.parse(date1).compareTo(df.parse(date2));
+                } catch (ParseException e) {
+                    return -1;
+                }
+            }
+        };
+
+        unsortedList.sort(dateComparator.thenComparing(nameComparator));
     }
     //@@author
 
