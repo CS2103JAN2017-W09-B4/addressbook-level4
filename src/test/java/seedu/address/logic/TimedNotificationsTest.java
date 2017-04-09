@@ -1,26 +1,17 @@
 package seedu.address.logic;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import javafx.collections.ObservableList;
-import seedu.address.testutil.TaskBuilder;
 import seedu.address.testutil.TypicalTestTasks;
-import seedu.task.commons.exceptions.IllegalValueException;
 import seedu.task.logic.TimedNotifications;
 import seedu.task.model.TaskManager;
 import seedu.task.model.task.ReadOnlyTask;
-import seedu.task.model.task.Task;
-import seedu.task.model.task.UniqueTaskList.DuplicateTaskException;
 
 //@@author A0141928B
 /**
@@ -60,45 +51,5 @@ public class TimedNotificationsTest {
         assertNotNull(notifications.iterator);
         assertNull(notifications.getMessage());
         assertNull(notifications.notification);
-    }
-
-    @Test
-    public void taskDueIn3Hours() {
-        //Get today's date and time
-        Date today = new Date();
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(today);
-        calendar.add(calendar.HOUR_OF_DAY, 3); //Add 3 hours to current time
-
-        StringBuilder date = new StringBuilder(); //To build a string that matches the deadline format
-        date.append(new SimpleDateFormat("dd-MMM-yyyy").format(calendar.getTime()))
-                    .append(" @ ").append(new SimpleDateFormat("hh:mm").format(calendar.getTime()));
-
-        //Create a task with the current time + 3 hours
-        try {
-            taskManager.addTask(new Task(new TaskBuilder().withName("task123")
-                    .withInformation("info")
-                    .withPriorityLevel("1")
-                    .withDeadline(date.toString())
-                    .withTags("tag").build()));
-        } catch (DuplicateTaskException e) {
-            assert false : "not possible";
-        } catch (IllegalValueException e) {
-            assert false : "not possible";
-        }
-        taskList = taskManager.getTaskList();
-
-        if (System.getProperty("os.name").startsWith("Windows")) { //Windows OS
-            notifications = new TimedNotifications(taskList, 1000);
-            notifications.run();
-            assertNotNull(notifications.iterator);
-            assertEquals(notifications.getMessage(), "task123");
-            assertNotNull(notifications.notification);
-        } else { //Other OS - can't run system tray notifications
-            thrown.expect(UnsupportedOperationException.class);
-            thrown.expect(AssertionError.class);
-            notifications = new TimedNotifications(taskList, 1000);
-            notifications.run();
-        }
     }
 }
