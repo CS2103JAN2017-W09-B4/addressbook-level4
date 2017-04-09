@@ -351,6 +351,31 @@ public class LogicManagerTest {
                 expectedAB.getTaskList());
     }
 
+    //@@author A0139322L
+    @Test
+    public void execute_deletesubset_removesCorrectTasks() throws Exception {
+        TestDataHelper helper = new TestDataHelper();
+        List<Task> fiveTasks = helper.generateTaskList(5);
+
+        TaskManager expectedTM = helper.generateTaskManager(fiveTasks);
+
+        Task task1 = fiveTasks.get(1);
+        Task task2 = fiveTasks.get(2);
+        Task task3 = fiveTasks.get(3);
+
+        expectedTM.removeTask(fiveTasks.get(1));
+        expectedTM.removeTask(fiveTasks.get(2));
+        expectedTM.removeTask(fiveTasks.get(3));
+        helper.addToModel(model, fiveTasks);
+
+        assertCommandSuccess("delete 2-4",
+                String.format(DeleteCommand.MESSAGE_DELETE_TASKS_SUCCESS
+                        + "%1$s,\n" + "%2$s,\n" + "%3$s", task1, task2, task3),
+                expectedTM,
+                expectedTM.getTaskList());
+    }
+    //@@author
+
 
     @Test
     public void execute_find_invalidArgsFormat() throws IllegalValueException {
