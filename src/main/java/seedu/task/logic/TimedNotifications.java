@@ -52,7 +52,7 @@ public class TimedNotifications extends TimerTask {
 
         StringBuilder date = new StringBuilder(); //To build a string that matches the deadline format
         date.append(new SimpleDateFormat("dd-MMM-yyyy").format(calendar.getTime()))
-                    .append(" @ ").append(new SimpleDateFormat("hh:mm").format(calendar.getTime()));
+                    .append(" @ ").append(new SimpleDateFormat("HH:mm").format(calendar.getTime()));
 
         Deadline deadline;
 

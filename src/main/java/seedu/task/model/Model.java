@@ -79,7 +79,7 @@ public interface Model {
     public void truncateOverdueList();
 
     //@@author A0135762A
-    /** Updates the filter of the filtered task list to filter by the today's date */
+    /** Updates the filter of the filtered task list to filter by the upcoming 24 hours */
     void updateUpcomingTaskList();
     //@@author
 
