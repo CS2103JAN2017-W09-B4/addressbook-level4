@@ -44,18 +44,18 @@ public class RedoCommand extends Command {
                 }
             //@@author A0139322L
             } else if (toRedo.getClass() == Integer.class) {
-            	Integer times = (Integer) gStack.getRedoStack().pop();
-            	int intTimes = times.intValue();
-            	
-            	for (int i = 0; i < intTimes; i++) {
-            		toRedo = gStack.getRedoStack().peek();
-            		assert toRedo.getClass() == Task.class : "The target task(s) cannot be missing!";
-            		ReadOnlyTask unmutableTask = gStack.redoDelete();
-            		model.deleteTask(unmutableTask);
-            	}
-            	
-            	gStack.getUndoStack().push(times);
-            	return new CommandResult(MESSAGE_SUCCESS);
+                Integer times = (Integer) gStack.getRedoStack().pop();
+                int intTimes = times.intValue();
+
+                for (int i = 0; i < intTimes; i++) {
+                    toRedo = gStack.getRedoStack().peek();
+                    assert toRedo.getClass() == Task.class : "The target task(s) cannot be missing!";
+                    ReadOnlyTask unmutableTask = gStack.redoDelete();
+                    model.deleteTask(unmutableTask);
+                }
+
+                gStack.getUndoStack().push(times);
+                return new CommandResult(MESSAGE_SUCCESS);
             //@@author
             } else {
                 gStack.redoClear();

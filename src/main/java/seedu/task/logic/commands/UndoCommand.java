@@ -50,13 +50,13 @@ public class UndoCommand extends Command {
             //@@author A0139322L
             } else if (toUndo.getClass() == Integer.class) {
                 Integer times = (Integer) gStack.getUndoStack().pop();
-            	int intTimes = times.intValue();
-                
+                int intTimes = times.intValue();
+
                 for (int i = 0; i < intTimes; i++) {
                     toUndo = gStack.getUndoStack().peek();
                     assert toUndo.getClass() == Task.class : "The target task(s) cannot be missing!";
-                	gStack.undoDelete();
-                	model.insertTasktoIndex(((Task) toUndo).getIndex(), (Task) toUndo);
+                    gStack.undoDelete();
+                    model.insertTasktoIndex(((Task) toUndo).getIndex(), (Task) toUndo);
                 }
 
                 gStack.getRedoStack().push(times);
