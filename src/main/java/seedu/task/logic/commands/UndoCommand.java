@@ -1,4 +1,3 @@
-//@@author A0139161J
 package seedu.task.logic.commands;
 
 import seedu.task.logic.GlobalStack;
@@ -8,6 +7,7 @@ import seedu.task.model.task.Task;
 import seedu.task.model.task.UniqueTaskList.DuplicateTaskException;
 import seedu.task.model.task.UniqueTaskList.TaskNotFoundException;
 
+//@@author A0139161J
 public class UndoCommand extends Command {
 
     public static final String COMMAND_WORD = "undo";

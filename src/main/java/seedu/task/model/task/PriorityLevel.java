@@ -25,10 +25,8 @@ public class PriorityLevel {
     public PriorityLevel(String priority) throws IllegalValueException {
         //assert priority != null;
         String trimmedPriority = priority.trim();
-        //@@author A0139161J
         if (trimmedPriority.equals("")) {
             this.value = trimmedPriority;
-        //@@author
         } else {
             if (!isValidPriorityLevel(trimmedPriority)) {
                 throw new IllegalValueException(MESSAGE_PRIORITY_LEVEL_CONSTRAINTS);

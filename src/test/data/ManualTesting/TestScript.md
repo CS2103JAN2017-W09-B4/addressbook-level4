@@ -31,7 +31,6 @@
 8. **Command**: `add Overdue event stub d/10 jan to 10 feb i/Overdue event t/Overdue`<br>
 **Expected**: New Task added: Overdue event stub Deadline: 10-Jan-2017 @ *current time* to 10-Feb-2017 @ *current time* Priority Level:  Information: Overdue event Tags: [Overdue]
 
-
 ### Edit Command: `edit`
 9. **Command** : `edit 3 d/10 march @ 2300hrs`<br>
 **Expected**: Edited Task: Go out for a drink with friends Deadline: 10-Mar-2017 @ 23:00 Priority Level: 3 Information: Clarke Quay Tags: [Personal]
@@ -115,14 +114,24 @@
 
 
 ### Complete Command: `complete`
-
-29. **Command**: “complete 6”<br>
+29. **Command**: `complete 6`<br>
 **Expected**: Task completed: Walk the cat Deadline: 09-Apr-2017 @ 18:00 to 09-Apr-2017 @ 20:00 Priority Level: 4 Information: Dog too mainstream Tags:
 
 ### Uncomplete Command: `uncomplete`
-30. **Command**: “uncomplete 6”<br>
+30. **Command**: `uncomplete 6`<br>
 **Expected**: Task uncompleted: Walk the cat Deadline: 09-Apr-2017 @ 18:00 to 09-Apr-2017 @ 20:00 Priority Level: 4 Information: Dog too mainstream Tags:
 
 ### Deletecompleted Command: `deletecompleted`
-31. **Command**: “deletecompleted 4”<br>
+31. **Command**: `deletecompleted 4`<br>
+
 **Expected**: Completed Task deleted: Do up presentation for GET1006 Deadline: 30-Mar-2017 @ 23:59 Priority Level: 1 Information:  Tags: [School]
+
+### Command History: Keyboard `up` and `down` arrow
+32. **Command**: Cycle through the keyboard `up` and `down` arrow<<br>
+**Expected**: Able to obtain all the commands keyed in from 1 to 31
+
+### Reminder Function 
+33. Add a task with deadline that's 3 hours and 2 minutes earlier than the current time.<br>
+eg: Current time = 1300hrs.<br>
+**Command**: `add remind me about this task d/0958hrs`<br>
+**Expected**: A reminder will be prompted every 2 mins via the windows system tray bar

@@ -171,43 +171,6 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public synchronized void truncateOverdueList() {
-        overdueTasks = new FilteredList<ReadOnlyTask>(taskManager.getTaskList());
-        DateFormat df = new SimpleDateFormat("dd-MMM-yyyy @ HH:mm");
-        Date currentDate = new Date();
-
-        Predicate<? super ReadOnlyTask> pred  = s -> {
-            // Events
-            if (s.getDate().value.contains("to")) {
-                String[] dateArray = s.getDate().value.split("to");
-
-                Date tempDate;
-                try {
-                    tempDate = df.parse(dateArray[1]);
-                } catch (ParseException e1) {
-                    tempDate = currentDate;
-                }
-
-                return currentDate.after(tempDate);
-            } else {
-                try {
-                    return df.parse(s.getDate().toString()).before(currentDate);
-                } catch (ParseException e) {
-                    return false;
-                }
-            }
-        };
-
-        overdueTasks.setPredicate(pred);
-
-        try {
-            taskManager.setOverdueTasks(overdueTasks);
-        } catch (DuplicateTaskException e) {
-            assert false : "There will be no duplicated tasks!";
-        }
-    }
-
-    @Override
     public void updateUpcomingTaskList() {
         Date currentDate = new Date();
 
@@ -256,6 +219,44 @@ public class ModelManager extends ComponentManager implements Model {
         };
 
         filteredTasks.setPredicate(pred);
+    }
+
+    //@@author
+    @Override
+    public synchronized void truncateOverdueList() {
+        overdueTasks = new FilteredList<ReadOnlyTask>(taskManager.getTaskList());
+        DateFormat df = new SimpleDateFormat("dd-MMM-yyyy @ HH:mm");
+        Date currentDate = new Date();
+
+        Predicate<? super ReadOnlyTask> pred  = s -> {
+            // Events
+            if (s.getDate().value.contains("to")) {
+                String[] dateArray = s.getDate().value.split("to");
+
+                Date tempDate;
+                try {
+                    tempDate = df.parse(dateArray[1]);
+                } catch (ParseException e1) {
+                    tempDate = currentDate;
+                }
+
+                return currentDate.after(tempDate);
+            } else {
+                try {
+                    return df.parse(s.getDate().toString()).before(currentDate);
+                } catch (ParseException e) {
+                    return false;
+                }
+            }
+        };
+
+        overdueTasks.setPredicate(pred);
+
+        try {
+            taskManager.setOverdueTasks(overdueTasks);
+        } catch (DuplicateTaskException e) {
+            assert false : "There will be no duplicated tasks!";
+        }
     }
 
     //@@author A0139322L
@@ -441,7 +442,7 @@ public class ModelManager extends ComponentManager implements Model {
             this.totalKeyWords = totalKeyWords;
         }
 
-        //@@author-A0139322L
+        //@@author A0139322L
         @Override
         public boolean run(ReadOnlyTask task) {
             return totalKeyWords.stream()
