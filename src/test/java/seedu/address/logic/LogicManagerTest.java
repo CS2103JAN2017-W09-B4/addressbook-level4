@@ -379,7 +379,7 @@ public class LogicManagerTest {
     public void execute_command_caseInsensitivity() throws Exception {
         TestDataHelper helper = new TestDataHelper();
         List<Task> fiveTasks = helper.generateTaskList(5);
-        Task toBeAdded = helper.generateTask(7);
+        Task toBeAdded = helper.task1();
 
         TaskManager expectedTM = helper.generateTaskManager(fiveTasks);
 
@@ -406,7 +406,7 @@ public class LogicManagerTest {
                 expectedTM.getTaskList());
 
         System.out.println(helper.generateAddCommand(task1));
-        assertCommandFailure(helper.generateAddCaseInsensitiveCommand2(task1),
+        assertCommandFailure(helper.generateAddCaseInsensitiveCommand2(toBeAdded),
                 AddCommand.MESSAGE_DUPLICATE_TASK);
     }
 
