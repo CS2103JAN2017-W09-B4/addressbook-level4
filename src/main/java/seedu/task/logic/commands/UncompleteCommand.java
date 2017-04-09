@@ -1,13 +1,15 @@
-//@@author A0139161J
 package seedu.task.logic.commands;
 
 import seedu.task.commons.core.Messages;
+
 import seedu.task.commons.core.UnmodifiableObservableList;
 import seedu.task.logic.commands.exceptions.CommandException;
 import seedu.task.model.task.ReadOnlyTask;
 import seedu.task.model.task.Task;
 import seedu.task.model.task.UniqueTaskList.DuplicateTaskException;
 import seedu.task.model.task.UniqueTaskList.TaskNotFoundException;
+
+//@@author A0139161J
 public class UncompleteCommand extends Command {
     public static final String COMMAND_WORD = "uncomplete";
 

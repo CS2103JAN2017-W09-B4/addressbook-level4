@@ -75,7 +75,9 @@ public class MainApp extends Application {
 
         initNotifications();
 
+        //@@author A0139161J
         initOverdueTimer(model);
+        //@@author
     }
 
     private String getApplicationParameter(String parameterName) {
@@ -176,6 +178,7 @@ public class MainApp extends Application {
         EventsCenter.getInstance().registerHandler(this);
     }
 
+    //@@author A0139161J
     private static void initOverdueTimer(Model model) {
         ot = new OverdueTimer(model);
         ot.start();
@@ -209,7 +212,9 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) {
         logger.info("Starting doTASK " + MainApp.VERSION);
         ui.start(primaryStage);
+        //@@author A0139161J
         ot.run();
+        //@@author
     }
 
     @Override
