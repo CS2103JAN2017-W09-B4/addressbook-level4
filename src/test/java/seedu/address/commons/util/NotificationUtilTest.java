@@ -17,21 +17,19 @@ public class NotificationUtilTest {
 
     @Test
     public void displayNotification_withDescription() {
-        //Will fail on non-Windows OS
-        if (!System.getProperty("os.name").startsWith("Windows")) {
-            thrown.expect(UnsupportedOperationException.class);
+        //Only works on Windows OS
+        if (System.getProperty("os.name").startsWith("Windows")) {
+            NotificationUtil.displayNotification("description");
         }
-        NotificationUtil.displayNotification("description");
     }
 
     @Test
     public void displayNotification_noDescription_assertionError() {
-        //Will fail on non-Windows OS
-        if (!System.getProperty("os.name").startsWith("Windows")) {
-            thrown.expect(UnsupportedOperationException.class);
+        //Only works on Windows OS
+        if (System.getProperty("os.name").startsWith("Windows")) {
+            thrown.expect(AssertionError.class);
+            NotificationUtil.displayNotification("");
         }
-        thrown.expect(AssertionError.class);
-        NotificationUtil.displayNotification("");
     }
 
 }
