@@ -353,7 +353,7 @@ public class LogicManagerTest {
 
     //@@author A0139322L
     @Test
-    public void execute_deletesubset_removesCorrectTasks() throws Exception {
+    public void execute_deleteSubset_removesCorrectTasks() throws Exception {
         TestDataHelper helper = new TestDataHelper();
         List<Task> fiveTasks = helper.generateTaskList(5);
 
@@ -374,6 +374,30 @@ public class LogicManagerTest {
                 expectedTM,
                 expectedTM.getTaskList());
     }
+
+    @Test
+    public void execute_command_noCaseRestriction() throws Exception {
+        TestDataHelper helper = new TestDataHelper();
+        List<Task> fiveTasks = helper.generateTaskList(5);
+
+        TaskManager expectedTM = helper.generateTaskManager(fiveTasks);
+
+        Task task1 = fiveTasks.get(1);
+        expectedTM.removeTask(fiveTasks.get(1));
+
+        helper.addToModel(model, fiveTasks);
+
+        assertCommandSuccess("dElETe 2",
+                String.format(DeleteCommand.MESSAGE_DELETE_TASK_SUCCESS, task1),
+                expectedTM,
+                expectedTM.getTaskList());
+
+        assertCommandSuccess("LisT",
+                ListCommand.MESSAGE_SUCCESS,
+                expectedTM,
+                expectedTM.getTaskList());
+    }
+
     //@@author
 
 
