@@ -15,12 +15,15 @@ By : `Miao Ling` , `Ian` , `Qi Xiang` and `Dylan` - `[W09-B4]` Since : `Feb 2017
 > 3.5. [Deleting a task](#35-deleting-a-task-delete)<br>
 > 3.6. [Completing a task](#36-completing-a-task-complete)<br>
 > 3.7. [Uncompleting a task](#37-uncompleting-a-task-uncomplete)<br>
-> 3.8. [Searching for tasks](#38-searching-for-tasks-find)<br>
-> 3.9. [Undo-ing previous action](#39-undo-ing-previous-action-undo)<br>
-> 3.10. [Redo-ing previous action](#310-redo-ing-previous-action-redo)<br>
-> 3.11. [Get previous command](#311-get-previous-command-)<br>
-> 3.12. [Get next command](#312-get-next-command-)<br>
-> 3.13. [Saving the task manager](#313-saving-the-task-manager-save)<br>
+> 3.8. [Deleting a completed task](#38-deleted-a-completed-task-deletecompleted)<br>
+> 3.9. [Searching for tasks](#39-searching-for-tasks-find)<br>
+> 3.10. [Searching for tags](#310-searching-for-tags-findtag)<br>
+> 3.11. [Undo-ing previous action](#311-undo-ing-previous-action-undo)<br>
+> 3.12. [Redo-ing previous action](#312-redo-ing-previous-action-redo)<br>
+> 3.13. [Get previous command](#313-get-previous-command-)<br>
+> 3.14. [Get next command](#314-get-next-command-)<br>
+> 3.15. [Clearing the task manager](##315-clearing-the-task-manager-clear)<br>
+> 3.16. [Saving the task manager](#316-saving-the-task-manager-save)<br>
 4. [FAQ](#4-faq)
 5. [Command Summary](#5-command-summary)
 
@@ -164,7 +167,7 @@ Example:
 * `uncomplete 2`
 > The task indicated by index number 2 in the "didTASKS" list section will be marked as completed and shifted over the the "doingTASKS" list section.
 
-### 3.8 Deleted a completed task: `deletecompleted`
+### 3.8 Deleting a completed task: `deletecompleted`
 
 Permanently removes the completed task from the completed task list.<br>
 Format: `deletecompleted INDEX_NUMBER`
