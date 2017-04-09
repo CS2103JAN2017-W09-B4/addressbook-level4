@@ -1,3 +1,4 @@
+//@@author A0139322L
 package seedu.address.logic.commands;
 
 import java.util.HashSet;
@@ -7,7 +8,6 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.exceptions.EmptySearchException;
 
 
-//@@author A0139322L
 public class SearchCommand extends Command {
 
     public static final String COMMAND_WORD = "search";
