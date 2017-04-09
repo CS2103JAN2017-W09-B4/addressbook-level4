@@ -70,8 +70,8 @@ Example:
 * add Buy Milk
 
 #### 3.2.2. Adds a task with `PRIORITY_LEVEL`. <br>
-Format: `add TASK_NAME [p/PRIORITY_LEVEL]`
-  > * `PRIORITY_LEVEL` should be defined by integers 1 (high) to 4 (low).<br>
+Format: `add TASK_NAME [p/PRIORITY_LEVEL]`<br>
+`PRIORITY_LEVEL` should be defined by integers 1 (high) to 4 (low).<br>
 
 Tasks will be colour-coded based on its priority level.
   > <img src="images/priority_colours.png">
@@ -96,16 +96,16 @@ Examples:
 * add Japan trip d/18 mar 2017 to 30 mar 2017
 
 #### 3.2.4. Adds a task with `INFORMATION`.<br>
-Format: `add TASK_NAME [i/INFORMATION]`
-   > * `INFORMATION` refers to the details of the task.<br>
+Format: `add TASK_NAME [i/INFORMATION]`<br>
+ `INFORMATION` refers to the details of the task.<br>
 
 Examples:
 > I want to buy a packet of milk, HL brand 1.5 Litres.<br>
 * add Buy Milk i/HL Milk 1.5 Litres
 
 #### 3.2.5. Adds a task with `TAGS`.<br>
-Format: `add TASK_NAME [t/TAGS]`
-   > * `TAGS` refers to the tags of the task.<br>
+Format: `add TASK_NAME [t/TAGS]`<br>
+`TAGS` refers to the tags of the task.<br>
 
 Examples:
 > I want to buy a packet of milk for home usage.<br>
