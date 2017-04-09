@@ -17,6 +17,8 @@ import seedu.task.logic.commands.SaveCommand;
 public class SaveCommandParser {
 
     public static final String XML_EXTENSION = ".xml";
+    public static final String FORWARD_SLASH = "/";
+    public static final String BACKSLASH = "\\";
 
     /**
      * Parses the given argument in the context of the SaveCommand and
@@ -37,7 +39,7 @@ public class SaveCommandParser {
         if (relativeMatcher.matches()) {
             return new SaveCommand(path);
         } else {
-            path = path.replace("/", "\\");
+            path = path.replace(FORWARD_SLASH, BACKSLASH);
             if (absoluteMatcher.matches()) {
                 return new SaveCommand(path);
             } else {
