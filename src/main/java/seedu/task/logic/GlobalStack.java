@@ -8,6 +8,9 @@ import seedu.task.model.task.ReadOnlyTask;
 import seedu.task.model.task.Task;
 
 //@@author A0139161J
+/**
+ * Contains 2 stacks for the undo/redo function to operate
+ */
 public class GlobalStack {
 
     private static GlobalStack instance = null;
@@ -28,9 +31,8 @@ public class GlobalStack {
         return instance;
     }
 
-    /*
-     * Usage : Undo/Redo Edit Command
-     */
+    //================Undo/Redo Edit Command====================
+
     /**
      * For undo-edit function
      */
@@ -67,9 +69,8 @@ public class GlobalStack {
         return originalTask;
     }
 
-    /*
-     * Usage : Undo/Redo Add Command
-     */
+    //================Undo/Redo Add Command====================
+
     public Task undoAdd() throws NoSuchElementException {
         try {
             Task temp = (Task) undoStack.pop();
@@ -90,9 +91,8 @@ public class GlobalStack {
         }
     }
 
-    /*
-     * Usage : Undo/Redo Delete Command
-     */
+    //================Undo/Redo Delete Command===================
+
     public ReadOnlyTask undoDelete() {
         ReadOnlyTask undoTask = (ReadOnlyTask) undoStack.pop();
         redoStack.push(undoTask);
@@ -105,6 +105,8 @@ public class GlobalStack {
         return redoTask;
     }
 
+    //================Undo/Redo Clear Command====================
+
     public TaskManager undoClear() {
         TaskManager toUndo = (TaskManager) undoStack.pop();
         redoStack.push(toUndo);
@@ -115,20 +117,13 @@ public class GlobalStack {
         undoStack.push(redoStack.pop());
     }
 
+    //================ Util/Getter Methods ==============================
+
     public Stack<Object> getUndoStack() {
         return undoStack;
     }
 
     public Stack<Object> getRedoStack() {
         return redoStack;
-    }
-
-    /** Debugging purpose */
-    public void printStack () {
-        @SuppressWarnings("unchecked")
-        Stack<Object> temp = (Stack<Object>) undoStack.clone();
-        for (int i = 0; i < temp.size(); i++) {
-            System.out.println(temp.pop().toString());
-        }
     }
 }

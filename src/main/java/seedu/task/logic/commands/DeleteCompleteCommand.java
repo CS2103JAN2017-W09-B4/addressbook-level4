@@ -7,6 +7,9 @@ import seedu.task.model.task.ReadOnlyTask;
 import seedu.task.model.task.UniqueTaskList.TaskNotFoundException;
 
 //@@author A0139161J
+/**
+ * Permanently removes the specified task from "didTASKS" list
+ */
 public class DeleteCompleteCommand extends Command {
 
     public static final String COMMAND_WORD = "deletecompleted";

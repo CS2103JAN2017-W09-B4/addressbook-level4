@@ -8,6 +8,9 @@ import seedu.task.model.task.UniqueTaskList.DuplicateTaskException;
 import seedu.task.model.task.UniqueTaskList.TaskNotFoundException;
 
 //@@author A0139161J
+/**
+ * Undo the previous actions for add/edit/delete/clear/redo
+ */
 public class UndoCommand extends Command {
 
     public static final String COMMAND_WORD = "undo";
@@ -26,25 +29,8 @@ public class UndoCommand extends Command {
                 throw new CommandException(GlobalStack.MESSAGE_NOTHING_TO_UNDO);
             }
             Object toUndo = gStack.getUndoStack().peek(); //needs improvement
-            gStack.printStack();
             if (toUndo.getClass() == Task.class) {
-                String parserInfo = ((Task) toUndo).getParserInfo();
-                System.out.println("Parser Info = " + parserInfo);
-                if (parserInfo.equals(COMMAND_WORD_ADD)) {
-                    gStack.undoAdd();
-                    model.deleteTask((Task) toUndo);
-                    return new CommandResult(String.format(MESSAGE_SUCCESS, toUndo));
-                } else if (parserInfo.equals(COMMAND_WORD_EDIT)) {
-                    Task originalTask = gStack.undoGetOriginalTask();
-                    Task editedTask = gStack.undoGetEditedTask();
-                    model.deleteTask(editedTask);
-                    model.addTask(originalTask);
-                    return new CommandResult(String.format(MESSAGE_SUCCESS, toUndo));
-                } else if (parserInfo.equals(COMMAND_WORD_DELETE)) { // it'll be delete command
-                    gStack.undoDelete(); // pushes task to redostack
-                    model.insertTasktoIndex(((Task) toUndo).getIndex(), (Task) toUndo);
-                    return new CommandResult(String.format(MESSAGE_SUCCESS, toUndo));
-                }
+                return taskToUndo(toUndo, gStack);
             //@@author A0139322L
             } else if (toUndo.getClass() == Integer.class) {
                 Integer times = (Integer) gStack.getUndoStack().pop();
@@ -59,7 +45,7 @@ public class UndoCommand extends Command {
 
                 gStack.getRedoStack().push(times);
                 return new CommandResult(MESSAGE_SUCCESS);
-            //@@author
+            //@@author A0139161J
             } else {
                 TaskManager undo = gStack.undoClear();
                 model.resetData(undo);
@@ -72,5 +58,26 @@ public class UndoCommand extends Command {
         }
         assert false : "not possible";
         return null;
+    }
+
+    private CommandResult taskToUndo(Object toUndo, GlobalStack gStack)
+            throws TaskNotFoundException, DuplicateTaskException {
+        String parserInfo = ((Task) toUndo).getParserInfo();
+        System.out.println("Parser Info = " + parserInfo);
+        if (parserInfo.equals(COMMAND_WORD_ADD)) {
+            gStack.undoAdd();
+            model.deleteTask((Task) toUndo);
+            return new CommandResult(String.format(MESSAGE_SUCCESS, toUndo));
+        } else if (parserInfo.equals(COMMAND_WORD_EDIT)) {
+            Task originalTask = gStack.undoGetOriginalTask();
+            Task editedTask = gStack.undoGetEditedTask();
+            model.deleteTask(editedTask);
+            model.addTask(originalTask);
+            return new CommandResult(String.format(MESSAGE_SUCCESS, toUndo));
+        } else {
+            gStack.undoDelete();
+            model.insertTasktoIndex(((Task) toUndo).getIndex(), (Task) toUndo);
+            return new CommandResult(String.format(MESSAGE_SUCCESS, toUndo));
+        }
     }
 }

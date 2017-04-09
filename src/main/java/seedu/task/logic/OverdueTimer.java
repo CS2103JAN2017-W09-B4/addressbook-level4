@@ -6,6 +6,9 @@ import java.util.TimerTask;
 import seedu.task.model.Model;
 
 //@@author A0139161J
+/**
+ * Constantly updates the overdue task list "OMG Y U NO DO"
+ */
 public class OverdueTimer extends TimerTask {
     private Timer timer;
     private long interval;

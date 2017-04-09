@@ -10,6 +10,9 @@ import seedu.task.model.task.UniqueTaskList.DuplicateTaskException;
 import seedu.task.model.task.UniqueTaskList.TaskNotFoundException;
 
 //@@author A0139161J
+/**
+ * Uncompletes a specified task, shifts the specified task from "didTASK" list to "doingTASKS" list
+ */
 public class UncompleteCommand extends Command {
     public static final String COMMAND_WORD = "uncomplete";
 
