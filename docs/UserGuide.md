@@ -179,10 +179,10 @@ Format: `find KEYWORD`
 > There will be a list of tasks shown that contains the stated `KEYWORD`.
 > In cases whereby user forgets the exact `KEYWORD`, doTASK will generate a near match search.
 
-Examples:
-> User wants to find a task with potato in the task name.
+Examples:<br>
+User wants to find a task with potato in the task name.<br>
 * `find potato`
-> User doesn't know the exact task name (there exists a task with task name : potato).
+User doesn't know the exact task name (there exists a task with task name : potato).<br>
 * `find pot`
 
 ### 3.10. Searching for tags: `findtag`
