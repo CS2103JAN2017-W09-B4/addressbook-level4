@@ -28,6 +28,7 @@ import seedu.task.logic.commands.SelectCommand;
 import seedu.task.logic.commands.UncompleteCommand;
 import seedu.task.logic.commands.UndoCommand;
 import seedu.task.logic.commands.UpcomingCommand;
+import seedu.task.logic.commands.exceptions.CommandException;
 
 /**
  * Parses user input.
@@ -44,6 +45,7 @@ public class Parser {
      *
      * @param userInput full user input string
      * @return the command based on the user input
+     * @throws CommandException
      */
     public Command parseCommand(String userInput) {
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
