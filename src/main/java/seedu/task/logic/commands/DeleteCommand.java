@@ -101,7 +101,8 @@ public class DeleteCommand extends Command {
                 }
             }
 
-            gStack.getUndoStack().push(times);
+            Integer t = new Integer(times);
+            gStack.getUndoStack().push(t);
 
             return new CommandResult(SubsetDeleted);
         }
