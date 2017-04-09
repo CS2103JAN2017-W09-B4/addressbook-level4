@@ -34,18 +34,17 @@ public class FindCommandTest extends TaskManagerGuiTest {
         commandBox.runCommand("list");
 
         // Levenshtein distance
-        assertFindExactMatchResult("find sk55");  // no results, missing two or more characters
-        assertFindExactMatchResult("find Task5566");  // no results, additional two or more characters
-        assertFindExactMatchResult("find ask55", td.task55); // missing one character
-        assertFindExactMatchResult("find Task555", td.task55);  // additional one character
+        assertFindNearMatchResult("find Task5566");  // no results, additional two or more characters
+        assertFindNearMatchResult("find ask55", td.task55); // missing one character
+        assertFindNearMatchResult("find Task555", td.task55);  // additional one character
 
         // transposition error
-        assertFindExactMatchResult("find sTks55");  // no results, more than one pair of letters swapped
-        assertFindExactMatchResult("find Tsak55", td.task55); // only one pair of letters swapped
+        assertFindNearMatchResult("find sTks55");  // no results, more than one pair of letters swapped
+        assertFindNearMatchResult("find Tsak55", td.task55); // only one pair of letters swapped
 
         // contains
-        assertFindExactMatchResult("find 555");  // 555 is not within Task55
-        assertFindExactMatchResult("find 55", td.task55); // 55 is within Task55
+        assertFindNearMatchResult("find 555");  // 555 is not within Task55
+        assertFindNearMatchResult("find 55", td.task55); // 55 is within Task55
     }
 
     @Test
