@@ -95,6 +95,7 @@ public class TimedNotificationsTest {
             assertEquals(notifications.getMessage(), "task123");
             assertNotNull(notifications.notification);
         } else { //Other OS - can't run system tray notifications
+            thrown.expect(UnsupportedOperationException.class);
             thrown.expect(AssertionError.class);
             notifications = new TimedNotifications(taskList, 1000);
             notifications.run();
