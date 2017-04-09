@@ -6,8 +6,10 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
+import seedu.task.commons.core.LogsCenter;
 import seedu.task.commons.util.NotificationUtil;
 import seedu.task.model.task.Deadline;
 import seedu.task.model.task.ReadOnlyTask;
@@ -21,14 +23,27 @@ public class TimedNotifications extends TimerTask {
     public Timer timer;
     private int period;
     public ObservableList<ReadOnlyTask> tasks;
+    public Iterator<ReadOnlyTask> iterator = null;
+    public NotificationUtil notification = null;
+    public Logger logger = LogsCenter.getLogger(LogsCenter.class);
 
     public TimedNotifications(ObservableList<ReadOnlyTask> tasks, int interval) {
         this.tasks = tasks;
         this.period = interval;
+
+        try {
+            iterator = tasks.iterator();
+        } catch (NullPointerException npe) {
+            logger.fine("No task list");
+        }
     }
 
-    public void updateMessage() {
-        this.message = "";
+    /**
+     * Look through the task list to find a task that is due 3 hours later
+     * @return The name of the task, "" if no task is due 3 hours later
+     */
+    public String getTaskName() {
+        String taskName = "";
 
         Date today = new Date();
         Calendar calendar = Calendar.getInstance();
@@ -41,15 +56,32 @@ public class TimedNotifications extends TimerTask {
 
         Deadline deadline;
 
-        Iterator<ReadOnlyTask> i = tasks.iterator();
-        while (i.hasNext()) {
-            ReadOnlyTask current = i.next();
-            deadline = current.getDate();
-            if (deadline.value.equals(date.toString())) {
-                this.message = current.getTaskName().toString();
-                break;
+        if (iterator != null) {
+            while (iterator.hasNext()) {
+                ReadOnlyTask current = iterator.next();
+                deadline = current.getDate();
+                if (deadline.value.equals(date.toString())) {
+                    taskName = current.getTaskName().toString();
+                    break;
+                }
             }
         }
+        return taskName;
+    }
+
+    /**
+     * Sets a given text as the message to be displayed in the notification
+     * @param text the message to be displayed in the notification
+     */
+    public void createMessage(String text) {
+        this.message = text;
+    }
+
+    /**
+     * @return The message to be displayed in the notification
+     */
+    public String getMessage() {
+        return this.message;
     }
 
     public void start() {
@@ -59,9 +91,9 @@ public class TimedNotifications extends TimerTask {
 
     @Override
     public void run() {
-        updateMessage();
+        createMessage(getTaskName());
         if (!message.isEmpty()) {
-            NotificationUtil notification = new NotificationUtil();
+            notification = new NotificationUtil();
             notification.displayNotification(this.message + " is due in 3 hours");
         }
     }
