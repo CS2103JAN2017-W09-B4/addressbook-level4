@@ -82,7 +82,7 @@ public class TimedNotificationsTest {
                     .withDeadline(date.toString())
                     .withTags("tag").build()));
         } catch (DuplicateTaskException e) {
-            assert false: "not possible";
+            assert false : "not possible";
         } catch (IllegalValueException e) {
             assert false : "not possible";
         }
