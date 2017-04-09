@@ -6,6 +6,9 @@
      */
     public static Optional<Deadline> parseDeadline(Optional<String> deadline) throws IllegalValueException {
         assert deadline != null;
+        if (deadline.isPresent() && deadline.get().equals("")) {
+            return deadline.isPresent() ? Optional.of(new Deadline("")) : Optional.empty();
+        }
         Parser parser = new Parser();
         String fromDate = new String("");
         String fromTime = null;
@@ -66,4 +69,24 @@
         }
         return deadline.isPresent() ? Optional.of(new Deadline(fromDate)) : Optional.empty();
     }
+```
+###### \java\seedu\task\logic\parser\ParserUtil.java
+``` java
+    /* Returns String in format of hh:mm:ss
+     * Precond: dateTime string formed by NattyParser required as input
+     */
+    public static String getTime(String dateTime) {
+        List<String> output = new ArrayList<String>();
+        StringTokenizer st = new StringTokenizer(dateTime);
+        List<String> list = new ArrayList<String>();
+        while (st.hasMoreTokens()) {
+            list.add(st.nextToken());
+        }
+        st = new StringTokenizer(list.get(3), ":");
+        while (st.hasMoreTokens()) {
+            output.add(st.nextToken());
+        }
+        return new String(output.get(0) + ":" + output.get(1));
+    }
+}
 ```
