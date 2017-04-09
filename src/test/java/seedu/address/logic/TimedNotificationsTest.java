@@ -88,10 +88,16 @@ public class TimedNotificationsTest {
         }
         taskList = taskManager.getTaskList();
 
-        notifications = new TimedNotifications(taskList, 1000);
-        notifications.run();
-        assertNotNull(notifications.iterator);
-        assertEquals(notifications.getMessage(), "task123");
-        assertNotNull(notifications.notification);
+        if (System.getProperty("os.name").startsWith("Windows")) { //Windows OS
+            notifications = new TimedNotifications(taskList, 1000);
+            notifications.run();
+            assertNotNull(notifications.iterator);
+            assertEquals(notifications.getMessage(), "task123");
+            assertNotNull(notifications.notification);
+        } else { //Other OS - can't run system tray notifications
+            thrown.expect(UnsupportedOperationException.class);
+            notifications = new TimedNotifications(taskList, 1000);
+            notifications.run();
+        }
     }
 }
