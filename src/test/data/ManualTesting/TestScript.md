@@ -29,7 +29,7 @@
 **Expected**: New Task added: Overdue task stub Deadline: 03-Apr-2017 @ *current time* Priority Level:  Information: showing the feature of overdue Tags: [Overdue]
 
 8. **Command**: `add Overdue event stub d/10 jan to 10 feb i/Overdue event t/Overdue`<br>
-**Expected**: New Task added: Overdue event stub Deadline: 10-Jan-2017 @ 18:17 to 10-Feb-2017 @ 18:17 Priority Level:  Information: Overdue event Tags: [Overdue]
+**Expected**: New Task added: Overdue event stub Deadline: 10-Jan-2017 @ *current time* to 10-Feb-2017 @ *current time* Priority Level:  Information: Overdue event Tags: [Overdue]
 
 
 ### Edit Command: `edit`
