@@ -1,10 +1,8 @@
 package seedu.task.logic.commands;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 
@@ -32,6 +30,7 @@ import seedu.task.model.task.UniqueTaskList;
 /**
  * Adds a task to the task manager.
  */
+//@@author A0139161J
 public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
@@ -53,14 +52,12 @@ public class AddCommand extends Command {
      * @throws IllegalValueException if any of the raw values are invalid
      * @throws CommandException
      */
-    @SuppressWarnings("deprecation")
     public AddCommand(String taskName, String deadline, String priorityLevel, String info, Set<String> tags)
-            throws IllegalValueException, CommandException {
+            throws IllegalValueException {
         final Set<Tag> tagSet = new HashSet<>();
         for (String tagName : tags) {
             tagSet.add(new Tag(tagName));
         }
-        //@@author A0139161J
         String fromDate = new String("");
         String fromTime = null;
         String toDate = new String("");
@@ -69,7 +66,7 @@ public class AddCommand extends Command {
             try {
                 deadline = nattyParser(deadline, fromDate, fromTime, toDate, toTime);
             } catch (RecognitionException e) {
-                throw new CommandException("Please key in a valid date input");
+                throw new IllegalValueException("Please key in a valid date input");
             }
         }
         this.toAdd = new Task(
@@ -96,7 +93,6 @@ public class AddCommand extends Command {
         }
     }
 
-    //@@author A0139161J
     /** Returns String in format of hh:mm
      *  Precond: dateTime string formed by NattyParser required as input
      */
@@ -130,38 +126,63 @@ public class AddCommand extends Command {
      * @param fromTime
      * @param toDate
      * @param toTime
-     * @return
+     * @return a String representing deadline
      */
     private String nattyParser(String deadline, String fromDate, String fromTime, String toDate, String toTime)
             throws RecognitionException {
         Parser parser = new Parser();
         List <DateGroup> groups = parser.parse(deadline);
         List dates = null;
-        int line;
-        int column;
-        String matchingValue;
-        String syntaxTree;
-        Map parseMap;
-        boolean isRecurring;
-        Date recursUntil;
-
+        /* Future usage for recurring tasks
+         *
+         * int line;
+         * int column;
+         * String matchingValue;
+         * String syntaxTree;
+         * Map parseMap;
+         * boolean isRecurring;
+         * Date recursUntil;
+         */
         for (DateGroup group: groups) {
             dates = group.getDates();
-            line = group.getLine();
+            /*line = group.getLine();
             column = group.getPosition();
             matchingValue = group.getText();
             syntaxTree = group.getSyntaxTree().toStringTree();
             parseMap = group.getParseLocations();
             isRecurring = group.isRecurring();
             recursUntil = group.getRecursUntil();
+            */
         }
 
         if (dates != null) {
+            fromDate = dates.get(0).toString();
             fromTime = getTime(fromDate);
+            System.out.println(fromDate);
             if (dates.size() != 1) {
                 toDate = dates.get(1).toString();
                 toTime = getTime(toDate);
+                System.out.println(toDate);
                 isEvent = true;
+            }
+        }
+        if (isEvent) {
+            if (!checkDateCorrectness(fromDate, toDate)) {
+                List<String> tempDate = new ArrayList<String>();
+                StringTokenizer st = new StringTokenizer(fromDate);
+                while (st.hasMoreTokens()) {
+                    tempDate.add(st.nextToken());
+                }
+                Integer dateInteger = Integer.parseInt(tempDate.get(2));
+                dateInteger -= 7;
+                //fail safe method for now, in case if it truncates to a negative digit
+                if (dateInteger < 0) {
+                    dateInteger += 7;
+                }
+                tempDate.set(3, dateInteger.toString());
+                StringBuilder sb = new StringBuilder(fromDate);
+                sb.replace(8, 10, dateInteger.toString());
+                fromDate = sb.toString();
             }
         }
         StringTokenizer st = new StringTokenizer(fromDate);
@@ -177,13 +198,57 @@ public class AddCommand extends Command {
             }
         }
         StringBuilder deadlineString = new StringBuilder();
-        deadlineString.append(listDeadline.get(2) + "-" + listDeadline.get(1)
+        try {
+            deadlineString.append(listDeadline.get(2) + "-" + listDeadline.get(1)
                 + "-" + listDeadline.get(5) + " @ " + fromTime);
-        if (isEvent) {
-            deadlineString.append(" to " + endOfEvent.get(2) + "-" + endOfEvent.get(1) + "-" + endOfEvent.get(5)
+            if (isEvent) {
+                deadlineString.append(" to " + endOfEvent.get(2) + "-" + endOfEvent.get(1) + "-" + endOfEvent.get(5)
                     + " @ " + toTime);
+            }
+            return deadlineString.toString();
+        } catch (IndexOutOfBoundsException e) {
+            throw new RecognitionException();
         }
-        return deadlineString.toString();
     }
-    //@@author
+
+    /** For event usage */
+    private boolean checkDateCorrectness(String fromDate, String toDate) {
+        boolean result = true;
+        List<String> listFromDate = new ArrayList<String>();
+        StringTokenizer st = new StringTokenizer(fromDate);
+        while (st.hasMoreTokens()) {
+            listFromDate.add(st.nextToken());
+        }
+        List<String> listToDate = new ArrayList<String>();
+        st = new StringTokenizer(toDate);
+        while (st.hasMoreTokens()) {
+            listToDate.add(st.nextToken());
+        }
+        result = checkIfSameMonth(listFromDate, listToDate);
+        return result;
+    }
+
+    /**
+     * eg. fromDate = 17 Apr , toDate = 10 Apr
+     *
+     * If fromDate is more than toDate, returns false
+     * else, returns true
+     */
+    private boolean checkIfSameMonth(List<String> listFromDate, List<String> listToDate) {
+        boolean result = true;
+        if (listFromDate.get(1).equals(listToDate.get(1))) {
+            result = checkDate(listFromDate, listToDate);
+        }
+        return result;
+    }
+
+    private boolean checkDate(List<String> listFromDate, List<String> listToDate) {
+        boolean result = true;
+        int fromDate = Integer.parseInt(listFromDate.get(2));
+        int toDate = Integer.parseInt(listToDate.get(2));
+        if (fromDate > toDate) {
+            result = false;
+        }
+        return result;
+    }
 }

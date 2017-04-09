@@ -25,7 +25,7 @@ public class AddCommandParser {
      * @throws ParseException
      * @throws CommandException
      */
-    public Command parse(String args) throws ParseException, CommandException {
+    public Command parse(String args) throws ParseException {
         ArgumentTokenizer argsTokenizer =
                 new ArgumentTokenizer(PREFIX_DEADLINE, PREFIX_PRIORITY_LEVEL, PREFIX_ANY_INFO, PREFIX_TAG);
         argsTokenizer.tokenize(args);
