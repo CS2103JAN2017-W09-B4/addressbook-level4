@@ -12,9 +12,10 @@ public class SaveCommand extends Command {
     public static final String COMMAND_WORD = "save";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Saves task data to a specified location "
-            + "Parameters: PATH_TO_FILE\\FILE_NAME.xml\n"
+            + "Parameters: RELATIVE_PATH_TO_FILE/FILE_NAME.xml OR ABSOLUTE_PATH_TO_FILE\\FILE_NAME.xml\n"
             + "Examples: " + COMMAND_WORD
-            + " data/todo.xml";
+            + " data/todo.xml" + " OR"
+            + " C:\\Users\\user\\Documents\\tasks.xml";
 
     public static final String MESSAGE_SUCCESS = "Data saved to: %1$s";
     public static final String MESSAGE_INVALID_FILE_PATH = "Invalid file path specified. "

@@ -1,9 +1,10 @@
 package seedu.task.logic.parser;
 
 import static seedu.task.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.task.logic.parser.CliSyntax.ABSOLUTE_PATH_ARGS_FORMAT;
+import static seedu.task.logic.parser.CliSyntax.RELATIVE_PATH_ARGS_FORMAT;
 
-import java.nio.file.InvalidPathException;
-import java.nio.file.Paths;
+import java.util.regex.Matcher;
 
 import seedu.task.logic.commands.Command;
 import seedu.task.logic.commands.IncorrectCommand;
@@ -24,22 +25,25 @@ public class SaveCommandParser {
     public Command parse(String args) {
         assert args != null;
 
-        try {
-            Paths.get(args); //Checks if path is valid
-        } catch (NullPointerException npe) {
-            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    SaveCommand.MESSAGE_USAGE));
-        } catch (InvalidPathException ipe) {
-            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    SaveCommand.MESSAGE_INVALID_FILE_PATH));
-        }
+        String path = args.trim();
 
-        if (!args.endsWith(XML_EXTENSION)) {
+        if (!path.endsWith(XML_EXTENSION)) {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     SaveCommand.MESSAGE_INVALID_FILE_TYPE));
         }
 
-        return new SaveCommand(args);
+        final Matcher relativeMatcher = RELATIVE_PATH_ARGS_FORMAT.matcher(path);
+        final Matcher absoluteMatcher = ABSOLUTE_PATH_ARGS_FORMAT.matcher(path);
+        if (relativeMatcher.matches()) {
+            return new SaveCommand(path);
+        } else {
+            path = path.replace("/", "\\");
+            if (absoluteMatcher.matches()) {
+                return new SaveCommand(path);
+            } else {
+                return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SaveCommand.MESSAGE_USAGE));
+            }
+        }
     }
 
 }
