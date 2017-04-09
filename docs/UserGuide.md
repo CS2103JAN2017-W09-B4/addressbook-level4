@@ -114,34 +114,7 @@ Examples:
 ### 3.3. Listing the tasks: `list`
 
 Shows a list of all the tasks in the task manager.<br>
-> Listing is done automatically when you switch between the tabs.<br>
-> However, you can choose to list all the tasks you have in the task manager. This list will be shown in a pop up.<br>
-> You can also sort it according to the deadlines, priorities, etc.
-> The index of the task as referenced by the task manager will always be shown alongside the task, ie. the index is not affected by filtering the list.
-
-Shows a list of all the tasks in lexicographical order.<br>
-Format: `list all`
-
-Shows a list of all the tasks sorted by deadline.<br>
-Format: `list deadline`
-
-Shows a list of all the tasks sorted by priority level.<br>
-Format: `list priority`
-
-Shows a list of the tasks sorted by a stated priority level, from 1 - 4.<br>
-Format: `list priority PRIORITY_LEVEL`
-> Tasks can be given any priority level from 1 to 4.
-> Tasks with `PRORITY_LEVEL` priority will be displayed.
-
-Examples:
-* `list priority 1`
-
-Shows a list of tasks of the tags sorted in lexicographical order.<br>
-Format: `list t/TAGS...`
-> The tasks listed will be in clusters according to tags, but sorted in alphabetical order.<br>
-
-Examples:
-* `list t/CS3230 t/Work`
+Format: `list`
 
 ### 3.4. Editing a task: `edit`
 Edits an existing task in the task manager.<br>
