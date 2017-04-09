@@ -30,15 +30,10 @@ public class Deadline {
      */
     public Deadline(String date) throws IllegalValueException {
         //assert date != null;
-        //@@author A0139161J
         if (date.equals("")) {
             this.value = date;
-        //@@author
         } else {
             String trimmedDate = date.trim();
-            /*if (!isValidDeadline(trimmedDate)) {
-                throw new IllegalValueException(MESSAGE_DEADLINE_CONSTRAINTS);
-            }*/
             this.value = trimmedDate;
         }
     }
