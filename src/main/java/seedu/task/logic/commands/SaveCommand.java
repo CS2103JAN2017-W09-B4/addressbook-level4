@@ -18,13 +18,12 @@ public class SaveCommand extends Command {
             + " C:\\Users\\user\\Documents\\tasks.xml";
 
     public static final String MESSAGE_SUCCESS = "Data saved to: %1$s";
-    public static final String MESSAGE_INVALID_FILE_PATH = "Invalid file path specified. "
-            + "Note: File name can only contain letters and digits";
     public static final String MESSAGE_INVALID_FILE_TYPE = "File name must end in .xml";
 
     private final String filePath;
 
     public SaveCommand(String path) {
+        assert path != null;
         this.filePath = path.trim();
     }
 
