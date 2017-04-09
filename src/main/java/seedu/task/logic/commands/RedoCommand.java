@@ -58,7 +58,7 @@ public class RedoCommand extends Command {
 
                 gStack.getUndoStack().push(times);
                 return new CommandResult(MESSAGE_SUCCESS);
-            //@@author
+            //@@author A0139161J
             } else {
                 gStack.redoClear();
                 model.resetData(new TaskManager());

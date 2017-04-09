@@ -27,7 +27,6 @@ public class DeleteCommand extends Command {
 
     public static final String MESSAGE_DELETE_TASK_SUCCESS = "Deleted Task: %1$s";
     public static final String MESSAGE_DELETE_TASKS_SUCCESS = "Deleted Tasks:\n";
-    //@@author
 
     public final int targetIndex;
     public final int times;
@@ -37,14 +36,12 @@ public class DeleteCommand extends Command {
         this.times = times;
     }
 
-
     @Override
     public CommandResult execute() throws CommandException {
 
         UnmodifiableObservableList<ReadOnlyTask> lastShownList = model.getFilteredTaskList();
         String subsetDeleted = MESSAGE_DELETE_TASKS_SUCCESS;
 
-        //@@author A0139322L
         if (times == 0) {
         //@@author
             if (lastShownList.size() < targetIndex) {
@@ -108,5 +105,4 @@ public class DeleteCommand extends Command {
             return new CommandResult(subsetDeleted);
         }
     }
-        //@@author
 }
