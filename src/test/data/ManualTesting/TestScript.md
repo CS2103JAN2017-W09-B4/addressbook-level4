@@ -130,3 +130,8 @@
 32. **Command**: Cycle through the keyboard `up` and `down` arrow<<br>
 **Expected**: Able to obtain all the commands keyed in from 1 to 31
 
+### Reminder Function 
+33. Add a task with deadline that's 3 hours and 2 minutes earlier than the current time.<br>
+eg: Current time = 1300hrs.<br>
+**Command**: `add remind me about this task d/0958hrs`<br>
+**Expected**: A reminder will be prompted every 2 mins via the windows system tray bar
