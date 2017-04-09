@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 
+import org.antlr.runtime.RecognitionException;
+
 import com.joestelmach.natty.DateGroup;
 import com.joestelmach.natty.Parser;
 
@@ -49,10 +51,11 @@ public class AddCommand extends Command {
      * Creates an AddCommand using raw values.
      *
      * @throws IllegalValueException if any of the raw values are invalid
+     * @throws CommandException
      */
     @SuppressWarnings("deprecation")
     public AddCommand(String taskName, String deadline, String priorityLevel, String info, Set<String> tags)
-            throws IllegalValueException {
+            throws IllegalValueException, CommandException {
         final Set<Tag> tagSet = new HashSet<>();
         for (String tagName : tags) {
             tagSet.add(new Tag(tagName));
@@ -63,61 +66,15 @@ public class AddCommand extends Command {
         String toDate = new String("");
         String toTime = null;
         if (!deadline.equals("")) {
-            Parser parser = new Parser();
-            List <DateGroup> groups = parser.parse(deadline);
-            List dates = null;
-            int line;
-            int column;
-            String matchingValue;
-            String syntaxTree;
-            Map parseMap;
-            boolean isRecurring;
-            Date recursUntil;
-
-            for (DateGroup group: groups) {
-                dates = group.getDates();
-                line = group.getLine();
-                column = group.getPosition();
-                matchingValue = group.getText();
-                syntaxTree = group.getSyntaxTree().toStringTree();
-                parseMap = group.getParseLocations();
-                isRecurring = group.isRecurring();
-                recursUntil = group.getRecursUntil();
+            try {
+                deadline = nattyParser(deadline, fromDate, fromTime, toDate, toTime);
+            } catch (RecognitionException e) {
+                throw new CommandException("Please key in a valid date input");
             }
-
-            if (dates != null) {
-                fromDate = dates.get(0).toString();
-                fromTime = getTime(fromDate);
-                if (dates.size() != 1) {
-                    toDate = dates.get(1).toString();
-                    toTime = getTime(toDate);
-                    isEvent = true;
-                }
-            }
-            StringTokenizer st = new StringTokenizer(fromDate);
-            List<String> listDeadline = new ArrayList<String>();
-            while (st.hasMoreTokens()) {
-                listDeadline.add(st.nextToken());
-            }
-            List<String> endOfEvent = new ArrayList<String>();
-            if (isEvent) {
-                st = new StringTokenizer(toDate);
-                while (st.hasMoreTokens()) {
-                    endOfEvent.add(st.nextToken());
-                }
-            }
-            StringBuilder deadlineString = new StringBuilder();
-            deadlineString.append(listDeadline.get(2) + "-" + listDeadline.get(1)
-                + "-" + listDeadline.get(5) + " @ " + fromTime);
-            if (isEvent) {
-                deadlineString.append(" to " + endOfEvent.get(2) + "-" + endOfEvent.get(1) + "-" + endOfEvent.get(5)
-                    + " @ " + toTime);
-            }
-            fromDate = deadlineString.toString();
         }
         this.toAdd = new Task(
                 new TaskName(taskName),
-                new Deadline(fromDate),
+                new Deadline(deadline),
                 new PriorityLevel(priorityLevel),
                 new Information(info),
                 new UniqueTagList(tagSet)
@@ -165,12 +122,68 @@ public class AddCommand extends Command {
         int targetIndex = lastShownList.indexOf(toAdd);
         EventsCenter.getInstance().post(new JumpToListRequestEvent(targetIndex));
     }
+
+    /**
+     * Imported Natty parser for flexible input of dates
+     * @param deadline
+     * @param fromDate
+     * @param fromTime
+     * @param toDate
+     * @param toTime
+     * @return
+     */
+    private String nattyParser(String deadline, String fromDate, String fromTime, String toDate, String toTime)
+            throws RecognitionException {
+        Parser parser = new Parser();
+        List <DateGroup> groups = parser.parse(deadline);
+        List dates = null;
+        int line;
+        int column;
+        String matchingValue;
+        String syntaxTree;
+        Map parseMap;
+        boolean isRecurring;
+        Date recursUntil;
+
+        for (DateGroup group: groups) {
+            dates = group.getDates();
+            line = group.getLine();
+            column = group.getPosition();
+            matchingValue = group.getText();
+            syntaxTree = group.getSyntaxTree().toStringTree();
+            parseMap = group.getParseLocations();
+            isRecurring = group.isRecurring();
+            recursUntil = group.getRecursUntil();
+        }
+
+        if (dates != null) {
+            fromTime = getTime(fromDate);
+            if (dates.size() != 1) {
+                toDate = dates.get(1).toString();
+                toTime = getTime(toDate);
+                isEvent = true;
+            }
+        }
+        StringTokenizer st = new StringTokenizer(fromDate);
+        List<String> listDeadline = new ArrayList<String>();
+        while (st.hasMoreTokens()) {
+            listDeadline.add(st.nextToken());
+        }
+        List<String> endOfEvent = new ArrayList<String>();
+        if (isEvent) {
+            st = new StringTokenizer(toDate);
+            while (st.hasMoreTokens()) {
+                endOfEvent.add(st.nextToken());
+            }
+        }
+        StringBuilder deadlineString = new StringBuilder();
+        deadlineString.append(listDeadline.get(2) + "-" + listDeadline.get(1)
+                + "-" + listDeadline.get(5) + " @ " + fromTime);
+        if (isEvent) {
+            deadlineString.append(" to " + endOfEvent.get(2) + "-" + endOfEvent.get(1) + "-" + endOfEvent.get(5)
+                    + " @ " + toTime);
+        }
+        return deadlineString.toString();
+    }
     //@@author
-    /*public Date timeFormatter(String time) throws ParseException {
-        System.out.println("stop here");
-        DateFormat sdf = new SimpleDateFormat("hh:mm:ss");
-        Date date = sdf.parse(time);
-        System.out.println(date.toString() + "STOP HERE");
-        return date;
-    }*/
 }
