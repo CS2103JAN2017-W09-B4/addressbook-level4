@@ -169,7 +169,6 @@ public class ModelManager extends ComponentManager implements Model {
     private void updateExactFilteredTaskList(Expression expression) {
         filteredTasks.setPredicate(expression::satisfies);
     }
-    //@@author
 
     @Override
     public synchronized void truncateOverdueList() {
@@ -177,43 +176,85 @@ public class ModelManager extends ComponentManager implements Model {
         DateFormat df = new SimpleDateFormat("dd-MMM-yyyy @ HH:mm");
         Date currentDate = new Date();
 
-        Calendar c = Calendar.getInstance();
-        c.setTime(currentDate);
-        c.add(Calendar.DATE, 1);
-
         Predicate<? super ReadOnlyTask> pred  = s -> {
-            try {
-                return df.parse(s.getDate().toString()).before(currentDate);
-            } catch (ParseException e) {
-                return false;
+            // Events
+            if (s.getDate().value.contains("to")) {
+                String[] dateArray = s.getDate().value.split("to");
+
+                Date tempDate;
+                try {
+                    tempDate = df.parse(dateArray[1]);
+                } catch (ParseException e1) {
+                    tempDate = currentDate;
+                }
+
+                return currentDate.after(tempDate);
+            } else {
+                try {
+                    return df.parse(s.getDate().toString()).before(currentDate);
+                } catch (ParseException e) {
+                    return false;
+                }
             }
         };
+
         overdueTasks.setPredicate(pred);
+
         try {
             taskManager.setOverdueTasks(overdueTasks);
         } catch (DuplicateTaskException e) {
-            assert false : "There will be no duplicated tasks";
+            assert false : "There will be no duplicated tasks!";
         }
     }
 
-    //@@author A0135762A
     @Override
     public void updateUpcomingTaskList() {
-        DateFormat df = new SimpleDateFormat("dd-MMM-yyyy @ HH:mm");
         Date currentDate = new Date();
 
+        // Upcoming 24 hours
         Calendar c = Calendar.getInstance();
         c.setTime(currentDate);
         c.add(Calendar.DATE, 1);
+        Date upcomingDate = c.getTime();
+
+        DateFormat df = new SimpleDateFormat("dd-MMM-yyyy @ HH:mm");
 
         Predicate<? super ReadOnlyTask> pred  = s -> {
-            try {
-                return df.parse(s.getDate().toString()).after(currentDate) &&
-                        df.parse(s.getDate().toString()).before(c.getTime());
-            } catch (ParseException e) {
-                return false;
+            // Events
+            if (s.getDate().value.contains("to")) {
+                String[] dateArray = s.getDate().value.split("to");
+
+                Date date0;
+                try {
+                    date0 = df.parse(dateArray[0]);
+                } catch (ParseException e1) {
+                    date0 = currentDate;
+                }
+
+                Date date1;
+                try {
+                    date1 = df.parse(dateArray[1]);
+                } catch (ParseException e1) {
+                    date1 = currentDate;
+                }
+
+                if (currentDate.after(date0) && currentDate.before(date1)) {
+                    return true;
+                } else if (currentDate.before(date0) && date0.before(upcomingDate)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                try {
+                    return df.parse(s.getDate().value).after(currentDate) &&
+                            df.parse(s.getDate().value).before(upcomingDate);
+                } catch (ParseException e) {
+                    return false;
+                }
             }
         };
+
         filteredTasks.setPredicate(pred);
     }
 
@@ -239,22 +280,31 @@ public class ModelManager extends ComponentManager implements Model {
         DateFormat df = new SimpleDateFormat("dd-MMM-yyyy @ HH:mm");
         Date currentDate = new Date();
 
-        Calendar c = Calendar.getInstance();
-        c.setTime(currentDate);
-        c.add(Calendar.DATE, 1);
-
         Predicate<? super ReadOnlyTask> pred  = s -> {
-            try {
-                return df.parse(s.getDate().toString()).before(currentDate);
-            } catch (ParseException e) {
-                return false;
+            //Events
+            if (s.getDate().value.contains("to")) {
+                String[] dateArray = s.getDate().value.split("to");
+
+                Date tempDate;
+                try {
+                    tempDate = df.parse(dateArray[1]);
+                } catch (ParseException e1) {
+                    tempDate = currentDate;
+                }
+
+                return currentDate.after(tempDate);
+            } else {
+                try {
+                    return df.parse(s.getDate().toString()).before(currentDate);
+                } catch (ParseException e) {
+                    return false;
+                }
             }
         };
+
         filteredTasks.setPredicate(pred);
     }
-    //@@author
 
-    //@@author A0135762A
     //========== Inner classes/methods used for Near Match Search =================================================
 
     // The Levenshtein distance is a string metric for measuring the difference between two sequences.

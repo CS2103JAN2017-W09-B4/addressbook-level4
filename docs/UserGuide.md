@@ -15,12 +15,15 @@ By : `Miao Ling` , `Ian` , `Qi Xiang` and `Dylan` - `[W09-B4]` Since : `Feb 2017
 > 3.5. [Deleting a task](#35-deleting-a-task-delete)<br>
 > 3.6. [Completing a task](#36-completing-a-task-complete)<br>
 > 3.7. [Uncompleting a task](#37-uncompleting-a-task-uncomplete)<br>
-> 3.8. [Searching for tasks](#38-searching-for-tasks-find)<br>
-> 3.9. [Undo-ing previous action](#39-undo-ing-previous-action-undo)<br>
-> 3.10. [Redo-ing previous action](#310-redo-ing-previous-action-redo)<br>
-> 3.11. [Get previous command](#311-get-previous-command-)<br>
-> 3.12. [Get next command](#312-get-next-command-)<br>
-> 3.13. [Saving the task manager](#313-saving-the-task-manager-save)<br>
+> 3.8. [Deleting a completed task](#38-deleting-a-completed-task-deletecompleted)<br>
+> 3.9. [Searching for tasks](#39-searching-for-tasks-find)<br>
+> 3.10. [Searching for tags](#310-searching-for-tags-findtag)<br>
+> 3.11. [Undo-ing previous action](#311-undo-ing-previous-action-undo)<br>
+> 3.12. [Redo-ing previous action](#312-redo-ing-previous-action-redo)<br>
+> 3.13. [Get previous command](#313-get-previous-command-)<br>
+> 3.14. [Get next command](#314-get-next-command-)<br>
+> 3.15. [Clearing the task manager](#315-clearing-the-task-manager-clear)<br>
+> 3.16. [Saving the task manager](#316-saving-the-task-manager-save)<br>
 4. [FAQ](#4-faq)
 5. [Command Summary](#5-command-summary)
 
@@ -59,7 +62,7 @@ Format: `help`
 ### 3.2. Adding a task: `add`
 There are a total of 5 parameters : `TASK_NAME` , `PRIORITY_LEVEL` , `DEADLINE` , `INFORMATION`, `TAGS`.<br>
 > `taskname` is mandatory. The rest of the parameters are optional.<br>
-> User can add a task with any of the optional parameters, mentioned from [3.2.2](#322-adds-a-task-with-priority-level-) - [3.2.5](#325-adds-a-task-with-tags).
+> User can add a task with any of the optional parameters, mentioned from [3.2.2](#322-adds-a-task-with-priority_level-) - [3.2.5](#325-adds-a-task-with-tags).
 
 #### 3.2.1. Adds a floating task.<br>
 > * Floating tasks are tasks that excludes other parameters. Priority level, deadline, information and taggings are excluded. <br>
@@ -70,9 +73,10 @@ Example:
 * add Buy Milk
 
 #### 3.2.2. Adds a task with `PRIORITY_LEVEL`. <br>
-Format: `add TASK_NAME [p/PRIORITY_LEVEL]`
-  > * `PRIORITY_LEVEL` should be defined by integers 1 (high) to 4 (low).<br>
-  > * Tasks will be colour-coded based on its priority level.
+Format: `add TASK_NAME [p/PRIORITY_LEVEL]`<br>
+`PRIORITY_LEVEL` should be defined by integers 1 (high) to 4 (low).<br>
+
+Tasks will be colour-coded based on its priority level.
   > <img src="images/priority_colours.png">
 
 Example:
@@ -80,27 +84,31 @@ Example:
 * add Buy Milk p/1
 
 #### 3.2.3. Adds a task with `DEADLINE`. <br>
-Format: `add TASK_NAME [d/DEADLINE]`
-   > * `DEADLINE` can be entered in the format of "date month", "month date", "date month year" or "month date year". <br>
+Format: `add TASK_NAME [d/DEADLINE]`<br>
+`DEADLINE` can be keyed in various methods. The user should read the following guidelines before moving on.<br>
+   > * `DEADLINE` should be entered in the format of "date month", "month date", "date month year" or "month date year". <br>
    > * If no year is specified, the current year of the system will be used as the year of the deadline.<br>
-   > * The month must be typed out as the first three letters of the month.<br>
+   > * The month should be spelled out either in full or with the general 3 letter naming convention.<br>
+   > * There are abbreviated forms allowed, such as today/tomorrow/this monday.<br>
    > * Tasks with deadlines will be complemented with reminders, so you won't forget to do them!
 
 Examples:
 > I want to buy a packet of milk by 17 March 2017.
-* add Buy Milk d/17-Mar-2017
+* add Buy Milk d/17 Mar 2017
+> I am heading to Japan from 18 March 2017 to 30 March 2017
+* add Japan trip d/18 mar 2017 to 30 mar 2017
 
 #### 3.2.4. Adds a task with `INFORMATION`.<br>
-Format: `add TASK_NAME [i/INFORMATION]`
-   > * `INFORMATION` refers to the details of the task.<br>
+Format: `add TASK_NAME [i/INFORMATION]`<br>
+ `INFORMATION` refers to the details of the task.<br>
 
 Examples:
 > I want to buy a packet of milk, HL brand 1.5 Litres.<br>
 * add Buy Milk i/HL Milk 1.5 Litres
 
 #### 3.2.5. Adds a task with `TAGS`.<br>
-Format: `add TASK_NAME [t/TAGS]`
-   > * `TAGS` refers to the tags of the task.<br>
+Format: `add TASK_NAME [t/TAGS]`<br>
+`TAGS` refers to the tags of the task.<br>
 
 Examples:
 > I want to buy a packet of milk for home usage.<br>
@@ -109,34 +117,7 @@ Examples:
 ### 3.3. Listing the tasks: `list`
 
 Shows a list of all the tasks in the task manager.<br>
-> Listing is done automatically when you switch between the tabs.<br>
-> However, you can choose to list all the tasks you have in the task manager. This list will be shown in a pop up.<br>
-> You can also sort it according to the deadlines, priorities, etc.
-> The index of the task as referenced by the task manager will always be shown alongside the task, ie. the index is not affected by filtering the list.
-
-Shows a list of all the tasks in lexicographical order.<br>
-Format: `list all`
-
-Shows a list of all the tasks sorted by deadline.<br>
-Format: `list deadline`
-
-Shows a list of all the tasks sorted by priority level.<br>
-Format: `list priority`
-
-Shows a list of the tasks sorted by a stated priority level, from 1 - 4.<br>
-Format: `list priority PRIORITY_LEVEL`
-> Tasks can be given any priority level from 1 to 4.
-> Tasks with `PRORITY_LEVEL` priority will be displayed.
-
-Examples:
-* `list priority 1`
-
-Shows a list of tasks of the tags sorted in lexicographical order.<br>
-Format: `list t/TAGS...`
-> The tasks listed will be in clusters according to tags, but sorted in alphabetical order.<br>
-
-Examples:
-* `list t/CS3230 t/Work`
+Format: `list`
 
 ### 3.4. Editing a task: `edit`
 Edits an existing task in the task manager.<br>
@@ -152,10 +133,10 @@ Examples:
 * `edit i/4 n/Exercise`
 
 ### 3.5. Deleting a task: `delete`
-Deletes the specified task.<br>
+Deletes the specified task in the "doingTASKS" list.<br>
 Format: `delete INDEX_NUMBER`
 
-> The task labelled `INDEX_NUMBER` will be deleted from the list.<br>
+> The task labelled `INDEX_NUMBER` will be deleted from the "doingTASKS" list.<br>
 > `INDEX_NUMBER` of tasks is shown according to the current tab.
 
 Examples:
@@ -164,122 +145,145 @@ Examples:
 
 ### 3.6. Completing a task: `complete`
 
-Marks the specified task in the "Uncompleted" list as complete.<br>
+Marks the specified task in the "doingTASKS" list as complete.<br>
 Format: `complete INDEX_NUMBER`
-> `INDEX_NUMBER` of tasks is shown according to the "Uncompleted" list.<br>
-> The task labelled by `INDEX_NUMBER` in the "Uncompleted" list will be marked as completed.<br>
-> The completed task will be moved over to the "Completed" list.
+> `INDEX_NUMBER` of tasks is shown according to the "doingTASKS" list.<br>
+> The task labelled by `INDEX_NUMBER` in the "doingTASKS" list will be marked as completed.<br>
+> The completed task will be moved over to the "didTASKS" list.
 
 Example:
 * `complete 2`
-> The task indicated by index number 2 in the "Uncompleted" list section will be marked as completed and shifted over the the "Completed" list section.
+> The task indicated by index number 2 in the "doingTASKS" list section will be marked as completed and shifted over the the "didTASKS" list section.
 
 ### 3.7 Uncompleting a task: `uncomplete`
 
-Marks the specified task in the "Completed" list as uncomplete.<br>
+Marks the specified task in the "didTASKS" list as uncomplete.<br>
 Format: `uncomplete INDEX_NUMER`
-> `INDEX_NUMBER` of tasks is shown according to the "Completed" list.<br>
-> The task labelled by `INDEX_NUMBER` in the "Completed" list will be marked as uncompleted.<br>
-> The uncompleted task will be moved over the the "Uncompleted" list.
+> `INDEX_NUMBER` of tasks is shown according to the "didTASKS" list.<br>
+> The task labelled by `INDEX_NUMBER` in the "didTASKS" list will be marked as uncompleted.<br>
+> The specified task will be moved over to the "doingTASKS" list.
 
 Example:
 * `uncomplete 2`
-> The task indicated by index number 2 in the "Completed" list section will be marked as completed and shifted over the the "Uncompleted" list section.
+> The task indicated by index number 2 in the "didTASKS" list section will be marked as completed and shifted over the the "doingTASKS" list section.
 
-### 3.8. Searching for tasks: `find`
+### 3.8 Deleting a completed task: `deletecompleted`
+
+Permanently removes the completed task from the completed task list.<br>
+Format: `deletecompleted INDEX_NUMBER`
+> `INDEX_NUMBER` of tasks is shown according to the "didTASKS" list.<br>
+> The task labelled by `INDEX_NUMBER` in the "didTASKS" list will be permanently removed from the task manager.<br>
+
+### 3.9. Searching for tasks: `find`
 
 Searches for tasks based on keywords that you want.<br>
 Format: `find KEYWORD`
 > No special characters such as ASCII whitespace is allowed.<br>
-> A popout will appear to show you the list of tasks that contains the stated `KEYWORD`.
+> There will be a list of tasks shown that contains the stated `KEYWORD`.
+> In cases whereby user forgets the exact `KEYWORD`, doTASK will generate a near match search.
 
-Examples:
+Examples:<br>
+> User wants to find a task with potato in the task name.<br>
 * `find potato`
+> User doesn't know the exact task name (there exists a task with task name : potato).<br>
+* `find pot`
 
-### 3.9. Undo-ing previous action: `undo`
+### 3.10. Searching for tags: `findtag`
+
+Searches for tasks with the specified tag.<br>
+Format: `findtag TAGS`
+
+### 3.11. Undo-ing previous action: `undo`
 
 Reverses previous action that you've made.<br>
 Format: `undo`
 > The command last executed will be reversed.
 > Only 1 command will be reversed at a time.
 
-### 3.10. Redo-ing previous action: `redo`
+### 3.12. Redo-ing previous action: `redo`
 
 Reverses previous `undo` that you've made.<br>
 Format: `redo`
 > Any previous `undo` will be reversed, in successive order.
 
-### 3.11. Get previous command: <kbd>↑</kbd>
+### 3.13. Get previous command: <kbd>↑</kbd>
 
 Retrieve the previous command entered, and replaces your text field with the previous command.<br>
 Format: Up arrow key
 > You can retrieve earlier commands from your use session by pressing <kbd>↑</kbd> again and again.
 
-### 3.12. Get next command: <kbd>↓</kbd>
+### 3.14. Get next command: <kbd>↓</kbd>
 
 Retrieve the next command entered, and replaces your text field with the next command.<br>
 Format: Down arrow key
 > You can retrieve later commands from your use session by pressing <kbd>↓</kbd> again and again.
 
-### 3.13. Saving the task manager: `save`
+### 3.15. Clearing the task manager: `clear`
+
+Clears the in-app memory of the task manager.<br>
+Format: `clear`
+> You can undo a clear command if it was accidentally keyed in.
+
+### 3.16. Saving the task manager: `save`
 
 Saves the task manager data to the .xml file specified by you.<br>
 Format: `save PATH_TO_FILE/FILE_NAME.xml`
-> The path specified is relative to the directory that your `doTASK.jar` file is in.<br>
 > Your file name must have the extension `.xml`.<br>
-> Upon creating/deleting/editing a task, the task data will be automatically saved to the file specified by you.<br>
 > If you did not specify a path, the default path is `data/taskManager.xml`.<br>
-> Do not erase the saved data as it will result in a complete loss of data that cannot be recovered by the application itself.
+> Do not delete the saved xml file or modify it as it may result in a complete loss of data that cannot be recovered by the application itself.<br>
+> The path specified can either be a relative path or an absolute path.
+> * A relative path is relative to the directory that your `doTASK.jar` file is in.<br>
+> * An absolute path specifies the root directory, and usually includes the C:\ or D:\ drive.<br>
+>
+> Refer below for examples of relative and absolute paths.
 
 Examples:
 * `save todo/myTasks.xml`
+* `save C:\Users\jimlim\Documents\todo.xml`
 
 ## 4. FAQ
+
+**Q**: How do I save my data in doTASK?<br>
+**A**: Your data is automatically saved every time you do something that modifies it (e.g. adding, editing, deleting tasks). If you would like to save your data to a specific directory, use the [save command](#313-saving-the-task-manager-save).
 
 **Q**: How do I transfer my data to another computer?<br>
 **A**: Install the application in the other computer and overwrite the empty data file with the file <file_name.xml> that contains the data of your current doTASK manager.
 
-**Q**: Will I get reminded if the deadlines of tasks are nearing?<br>
-**A**: For tasks that are due in 24 hours, there will be a notification in the system tray reminding you of the task.
+**Q**: How do I load my data from an xml file to doTASK?<br>
+**A**: Save doTASK to any location you like using the [save command](#313-saving-the-task-manager-save). Locate the save file, and overwrite it with your own xml file. Restart doTASK, and your data should be loaded.
+
+**Q**: How will I know if the deadlines of tasks are nearing?<br>
+**A**: For tasks that are due soon, there will be a notification in the system tray reminding you of the task. The system tray notification will remind you of tasks that are due in **3 hours**.
 
 ## 5. Command Summary
 
 * **Help** : `help`
 
-* **Switching between tabs** : `switch`
-
-* **Add a Floating Task** : `add TASK_NAME p/PRIORITY_LEVEL [i/ANY_INFO] [t/TAGS]...`<br>
-  e.g. `add Buy a new fan p/4 t/Home`
-
-* **Add** : `add TASK_NAME d/DEADLINE p/PRIORITY_LEVEL [i/ANY_INFO] [t/TAGS]...`<br>
+* **Add** : `add TASK_NAME [d/DEADLINE] [p/PRIORITY_LEVEL] [i/ANY_INFO] [t/TAGS]...`<br>
 	e.g. `add Sleep d/27 December 2018 p/1 i/Sleep is good t/Home`
 
-* **List All** : `list all`
-
-* **List All by Deadlines** : `list deadlines`
-
-* **List All by Priority** : `list priority`
-
-* **List by Specific Priority** : `list priority PRIORITY_LEVEL`
-	e.g. `list priority 1`
-
-* **List by Tags** : `list t/TAGS [MORE_TAGS]`<br>
-	e.g. `list t/CS2103 t/Work t/School`
+* **List All** : `list`
 
 * **Edit** : `edit`<br>
 	e.g. `edit i/3 n/Buy a house`
 
-* **Delete** : `delete`<br>
+* **Delete an uncompleted task** : `delete`<br>
 	e.g. `delete 1`
 
-* **Completion of task** : `complete`<br>
+* **Complete a task** : `complete`<br>
 	e.g. `complete 1`
 
-* **Checking progress/performance** : `progress NUMBER_OF_DAYS`<br>
-	e.g. `progress 7`
+* **Uncomplete a task** : `uncomplete`<br>
+	e.g. `uncomplete 1`
 
-* **Search for tasks** : `find KEYWORD`<br>
+* **Delete a completed task** : `deletecompleted`<br>
+	e.g. `deletecompleted 1`
+
+* **Find tasks containing KEYWORD** : `find KEYWORD`<br>
 	e.g. `find potato`
+
+* **Find tasks related to tag** : `findtag`<br>
+	e.g. `findtag Work`
 
 * **Undo previous action** : `undo`<br>
 
@@ -288,5 +292,7 @@ Examples:
 * **Get previous command** : <kbd>↑</kbd><br>
 
 * **Get next command** : <kbd>↓</kbd><br>
+
+* **Clear task manager** : `clear`
 
 * **Save data to file** : `save PATH_TO_FILE/FILE_NAME.xml`<br>

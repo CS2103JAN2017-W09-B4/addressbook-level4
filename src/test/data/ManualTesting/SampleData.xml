@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<taskmanager>
+    <tasks>
+        <name>90kg Bench press</name>
+        <deadline>01-Aug-2017 @ 22:42</deadline>
+        <priority>2</priority>
+        <information>max 3 reps</information>
+    </tasks>
+    <tasks>
+        <name>Basketball practice</name>
+        <deadline>13-Apr-2017 @ 21:48</deadline>
+        <priority>3</priority>
+        <information></information>
+        <tagged>School</tagged>
+    </tasks>
+    <tasks>
+        <name>Celebrate Christmas</name>
+        <deadline>25-Dec-2016 @ 23:59</deadline>
+        <priority>4</priority>
+        <information></information>
+        <tagged>Home</tagged>
+    </tasks>
+    <tasks>
+        <name>Clean out the keyboard</name>
+        <deadline></deadline>
+        <priority>4</priority>
+        <information>Too much dust</information>
+        <tagged>Home</tagged>
+    </tasks>
+    <tasks>
+        <name>Clean the house</name>
+        <deadline>15-Feb-2017 @ 23:59</deadline>
+        <priority>4</priority>
+        <information>Mum forced</information>
+        <tagged>Home</tagged>
+    </tasks>
+    <tasks>
+        <name>Collect specs</name>
+        <deadline>17-Aug-2017 @ 22:44</deadline>
+        <priority>1</priority>
+        <information>Owndays</information>
+    </tasks>
+    <tasks>
+        <name>Find a birthday present for Athene</name>
+        <deadline>15-Aug-2017 @ 21:38</deadline>
+        <priority>3</priority>
+        <information>Find out what she likes</information>
+        <tagged>Personal</tagged>
+    </tasks>
+    <tasks>
+        <name>Find an internship</name>
+        <deadline>15-Jun-2017 @ 23:59</deadline>
+        <priority>1</priority>
+        <information>For ATEP</information>
+        <tagged>School</tagged>
+    </tasks>
+    <tasks>
+        <name>Finish learning BTS dance moves</name>
+        <deadline></deadline>
+        <priority></priority>
+        <information>i need you</information>
+    </tasks>
+    <tasks>
+        <name>Finish The Witcher 3</name>
+        <deadline></deadline>
+        <priority>4</priority>
+        <information></information>
+        <tagged>Games</tagged>
+    </tasks>
+    <tasks>
+        <name>Finish up practice papers</name>
+        <deadline>24-Apr-2017 @ 23:59</deadline>
+        <priority>1</priority>
+        <information>:Preparing for finals</information>
+        <tagged>School</tagged>
+    </tasks>
+    <tasks>
+        <name>FOW Camp</name>
+        <deadline>10-Jul-2017 @ 23:59</deadline>
+        <priority>1</priority>
+        <information></information>
+        <tagged>School</tagged>
+    </tasks>
+    <tasks>
+        <name>FSC Camp</name>
+        <deadline>29-May-2017 @ 23:59</deadline>
+        <priority>1</priority>
+        <information></information>
+        <tagged>School</tagged>
+    </tasks>
+    <tasks>
+        <name>Go for PLC</name>
+        <deadline>22-May-2017 @ 23:59</deadline>
+        <priority>1</priority>
+        <information>with FSC OGLs</information>
+        <tagged>School</tagged>
+    </tasks>
+    <tasks>
+        <name>Go for the Coldplay concert</name>
+        <deadline>13-Apr-2017 @ 21:49 to 15-Apr-2017 @ 21:49</deadline>
+        <priority>4</priority>
+        <information>and maybe sleep.</information>
+        <tagged>Personal</tagged>
+    </tasks>
+    <tasks>
+        <name>Go out for a drink with friends</name>
+        <deadline>10-Feb-2017 @ 23:59</deadline>
+        <priority>3</priority>
+        <information>Clarke Quay</information>
+        <tagged>Personal</tagged>
+    </tasks>
+    <tasks>
+        <name>Go out with the family</name>
+        <deadline>10-Jun-2017 @ 23:59</deadline>
+        <priority>1</priority>
+        <information></information>
+        <tagged>Home</tagged>
+    </tasks>
+    <tasks>
+        <name>Go running</name>
+        <deadline>16-Apr-2017 @ 21:43</deadline>
+        <priority>3</priority>
+        <information>Prepare for IPPT</information>
+        <tagged>Personal</tagged>
+    </tasks>
+    <tasks>
+        <name>Go to the gym</name>
+        <deadline>15-Apr-2017 @ 21:43</deadline>
+        <priority>3</priority>
+        <information></information>
+        <tagged>Personal</tagged>
+    </tasks>
+    <tasks>
+        <name>Learn how to code in Ruby</name>
+        <deadline></deadline>
+        <priority>3</priority>
+        <information>Broaden reportoire</information>
+        <tagged>School</tagged>
+    </tasks>
+    <tasks>
+        <name>Learn how to use Linux</name>
+        <deadline></deadline>
+        <priority>3</priority>
+        <information></information>
+        <tagged>School</tagged>
+    </tasks>
+    <tasks>
+        <name>Learn kayaking over the hols</name>
+        <deadline></deadline>
+        <priority></priority>
+        <information></information>
+    </tasks>
+    <tasks>
+        <name>Make 9gag memes</name>
+        <deadline></deadline>
+        <priority></priority>
+        <information>Everyday</information>
+    </tasks>
+    <tasks>
+        <name>Mop the floor</name>
+        <deadline>15-Apr-2017 @ 22:35</deadline>
+        <priority></priority>
+        <information></information>
+    </tasks>
+    <tasks>
+        <name>Pack for reservist callback</name>
+        <deadline>22-Jul-2017 @ 21:44</deadline>
+        <priority>2</priority>
+        <information></information>
+        <tagged>Personal</tagged>
+    </tasks>
+    <tasks>
+        <name>Pay mobile charges</name>
+        <deadline></deadline>
+        <priority>2</priority>
+        <information>Pay mom $50</information>
+        <tagged>Home</tagged>
+    </tasks>
+    <tasks>
+        <name>Plan a game design to develop</name>
+        <deadline></deadline>
+        <priority>2</priority>
+        <information>What genre should I delve into?</information>
+        <tagged>Games</tagged>
+    </tasks>
+    <tasks>
+        <name>Plan for IFG</name>
+        <deadline>20-Aug-2017 @ 21:33</deadline>
+        <priority>1</priority>
+        <information>Finalise rulings</information>
+        <tagged>School</tagged>
+    </tasks>
+    <tasks>
+        <name>Plan for overseas trip malaysia</name>
+        <deadline>05-May-2017 @ 14:00</deadline>
+        <priority></priority>
+        <information>With uni friends</information>
+    </tasks>
+    <tasks>
+        <name>Plan grad trip</name>
+        <deadline>14-May-2019 @ 21:35</deadline>
+        <priority>3</priority>
+        <information>Graduation!</information>
+        <tagged>Personal</tagged>
+    </tasks>
+    <tasks>
+        <name>Plan modules for the next AY</name>
+        <deadline>23-Jul-2017 @ 23:59</deadline>
+        <priority>2</priority>
+        <information></information>
+        <tagged>School</tagged>
+    </tasks>
+    <tasks>
+        <name>Plan out the holidays</name>
+        <deadline>24-Apr-2017 @ 22:38</deadline>
+        <priority>3</priority>
+        <information></information>
+    </tasks>
+    <tasks>
+        <name>Prepare for CS2103T Software Demo</name>
+        <deadline>12-Apr-2017 @ 09:00</deadline>
+        <priority>1</priority>
+        <information></information>
+        <tagged>School</tagged>
+    </tasks>
+    <tasks>
+        <name>Print out notes for CS3230</name>
+        <deadline>12-Apr-2017 @ 21:46</deadline>
+        <priority>1</priority>
+        <information></information>
+        <tagged>School</tagged>
+    </tasks>
+    <tasks>
+        <name>RAG Camp</name>
+        <deadline>02-Jun-2017 @ 23:59</deadline>
+        <priority>1</priority>
+        <information></information>
+        <tagged>School</tagged>
+    </tasks>
+    <tasks>
+        <name>Reach 5k solo mmr</name>
+        <deadline>01-Aug-2017 @ 23:59</deadline>
+        <priority>1</priority>
+        <information>doto</information>
+    </tasks>
+    <tasks>
+        <name>Revise Coding modules</name>
+        <deadline>16-Apr-2017 @ 23:59</deadline>
+        <priority>1</priority>
+        <information>Preparing for finals</information>
+        <tagged>School</tagged>
+    </tasks>
+    <tasks>
+        <name>Revise everything else</name>
+        <deadline>20-Apr-2017 @ 23:59</deadline>
+        <priority>1</priority>
+        <information>Preparing for finals</information>
+        <tagged>School</tagged>
+    </tasks>
+    <tasks>
+        <name>Revise Science modules</name>
+        <deadline>17-Apr-2017 @ 23:59</deadline>
+        <priority>1</priority>
+        <information>Preparing for finals</information>
+        <tagged>School</tagged>
+    </tasks>
+    <tasks>
+        <name>Save up 100 dollars</name>
+        <deadline>20-Apr-2017 @ 21:40</deadline>
+        <priority>2</priority>
+        <information>A penny a day</information>
+        <tagged>Personal</tagged>
+    </tasks>
+    <tasks>
+        <name>Scout out a new laptop</name>
+        <deadline>03-Aug-2017 @ 21:42</deadline>
+        <priority>2</priority>
+        <information>So says the giant crack on my screen</information>
+        <tagged>Personal</tagged>
+    </tasks>
+    <tasks>
+        <name>Study for LSM1303 Quiz 3</name>
+        <deadline>12-Apr-2017 @ 10:00</deadline>
+        <priority>1</priority>
+        <information></information>
+        <tagged>School</tagged>
+    </tasks>
+    <tasks>
+        <name>Survive Finals</name>
+        <deadline>04-May-2017 @ 23:59</deadline>
+        <priority>1</priority>
+        <information></information>
+        <tagged>School</tagged>
+    </tasks>
+    <tasks>
+        <name>Watch Taeyeon new music video</name>
+        <deadline>04-Apr-2017 @ 22:36</deadline>
+        <priority></priority>
+        <information>Make me love you</information>
+    </tasks>
+    <tags>School</tags>
+    <tags>Home</tags>
+    <tags>Malaysiatrip</tags>
+    <tags>Gym</tags>
+    <tags>Games</tags>
+    <tags>Personal</tags>
+    <completedTasks>
+        <name>Do up a task list</name>
+        <deadline>10-Apr-2017 @ 12:00</deadline>
+        <priority>1</priority>
+        <information>CS2103T</information>
+        <tagged>School</tagged>
+    </completedTasks>
+    <completedTasks>
+        <name>Do up presentation for GET1006</name>
+        <deadline>30-Mar-2017 @ 23:59</deadline>
+        <priority>1</priority>
+        <information></information>
+        <tagged>School</tagged>
+    </completedTasks>
+    <completedTasks>
+        <name>Go on a date</name>
+        <deadline>23-Mar-2017 @ 22:40</deadline>
+        <priority>1</priority>
+        <information></information>
+    </completedTasks>
+    <completedTasks>
+        <name>Prepare for software demo</name>
+        <deadline>05-Apr-2017 @ 22:41</deadline>
+        <priority>1</priority>
+        <information></information>
+    </completedTasks>
+    <completedTasks>
+        <name>Study for CS3230 midterms</name>
+        <deadline>01-Mar-2017 @ 22:31</deadline>
+        <priority>4</priority>
+        <information>Gonna tikam all the way yolo</information>
+    </completedTasks>
+    <completedTasks>
+        <name>Write a card to Dwayne overseas</name>
+        <deadline>27-Feb-2017 @ 22:27</deadline>
+        <priority>2</priority>
+        <information>In Netherlands</information>
+    </completedTasks>
+    <overdueTasks>
+        <name>Celebrate Christmas</name>
+        <deadline>25-Dec-2016 @ 23:59</deadline>
+        <priority>4</priority>
+        <information></information>
+        <tagged>Home</tagged>
+    </overdueTasks>
+    <overdueTasks>
+        <name>Watch Taeyeon new music video</name>
+        <deadline>04-Apr-2017 @ 22:36</deadline>
+        <priority></priority>
+        <information>Make me love you</information>
+    </overdueTasks>
+</taskmanager>

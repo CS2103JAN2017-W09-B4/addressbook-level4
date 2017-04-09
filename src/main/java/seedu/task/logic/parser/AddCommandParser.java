@@ -13,6 +13,7 @@ import seedu.task.commons.exceptions.IllegalValueException;
 import seedu.task.logic.commands.AddCommand;
 import seedu.task.logic.commands.Command;
 import seedu.task.logic.commands.IncorrectCommand;
+import seedu.task.logic.commands.exceptions.CommandException;
 
 /**
  * Parses input arguments and creates a new AddCommand object
@@ -22,6 +23,7 @@ public class AddCommandParser {
      * Parses the given {@code String} of arguments in the context of the AddCommand
      * and returns an AddCommand object for execution.
      * @throws ParseException
+     * @throws CommandException
      */
     public Command parse(String args) throws ParseException {
         ArgumentTokenizer argsTokenizer =

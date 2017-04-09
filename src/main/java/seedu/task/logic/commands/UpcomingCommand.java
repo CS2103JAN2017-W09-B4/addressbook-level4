@@ -1,6 +1,6 @@
-//@@author A0135762A
 package seedu.task.logic.commands;
 
+//@@author A0135762A
 /**
  * Lists all the upcoming tasks in the task manager to the user.
  */
@@ -9,7 +9,7 @@ public class UpcomingCommand extends Command {
 
     public static final String COMMAND_WORD = "upcoming";
 
-    public static final String MESSAGE_SUCCESS = "Listed all the upcoming tasks";
+    public static final String MESSAGE_SUCCESS = "Listed all the upcoming tasks!";
 
 
     @Override
