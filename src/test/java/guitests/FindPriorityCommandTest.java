@@ -7,7 +7,7 @@ import org.junit.Test;
 import seedu.address.testutil.TestTask;
 import seedu.task.commons.core.Messages;
 
-//A0135762A
+//@@author A0135762A
 public class FindPriorityCommandTest extends TaskManagerGuiTest {
 
     @Test
