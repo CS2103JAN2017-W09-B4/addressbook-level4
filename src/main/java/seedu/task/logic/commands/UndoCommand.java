@@ -54,7 +54,7 @@ public class UndoCommand extends Command {
                 
                 for (int i = 0; i < intTimes; i++) {
                     toUndo = gStack.getUndoStack().peek();
-                    assert toUndo != null : "The target task(s) cannot be missing!";
+                    assert toUndo.getClass() == Task.class : "The target task(s) cannot be missing!";
                 	gStack.undoDelete();
                 	model.insertTasktoIndex(((Task) toUndo).getIndex(), (Task) toUndo);
                 }
