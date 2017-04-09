@@ -81,7 +81,7 @@
 }
 
 .split-pane {
-    -fx-border-radius: 1;
+    -fx-border-radius: 0;
     -fx-border-width: 1;
     -fx-background-color: derive(#1d1d1d, 20%);
 }
@@ -89,7 +89,7 @@
 /*@@author A0141928B */
 /*each cell of the task list*/
 .list-cell {
-    -fx-background-color: #ffffff;
+    -fx-background-color: #efefef;
     -fx-label-padding: 0 0 0 0;
     -fx-graphic-text-gap : 0;
     -fx-padding: 0 0 0 0;
@@ -324,6 +324,21 @@
     -fx-border-width: 0 0 1 15;
 }
 
+#cardPane {
+    -fx-background-color: #ffffff;
+}
+
+#taskListView {
+    -fx-background-color: #efefef;
+}
+
+#completedTaskListView {
+    -fx-background-color: #efefef;
+}
+
+#overdueListView {
+    -fx-background-color: #efefef;
+}
 /*Command box*/
 #commandTextField {
     -fx-font-family: "Code New Roman";
