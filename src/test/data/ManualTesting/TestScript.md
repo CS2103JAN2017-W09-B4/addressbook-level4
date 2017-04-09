@@ -32,7 +32,7 @@
 **Expected**: New Task added: Overdue event stub Deadline: 10-Jan-2017 @ 18:17 to 10-Feb-2017 @ 18:17 Priority Level:  Information: Overdue event Tags: [Overdue]
 
 
-### Edit Command: `edit` 
+### Edit Command: `edit`
 9. **Command** : `edit 3 d/10 march @ 2300hrs`
 **Expected**: Edited Task: Go out for a drink with friends Deadline: 10-Mar-2017 @ 23:00 Priority Level: 3 Information: Clarke Quay Tags: [Personal]
 
@@ -49,7 +49,7 @@
 **Expected**: Edited Task: Learn kayaking over the hols Deadline:  Priority Level:  Information:  Tags: [New][Hobby]
 
 14. **Command**: `edit 6 Walk the cat i/Dog too mainstream`
-**Expected**: Edited Task: Walk the cat Deadline: 09-Apr-2017 @ 18:00 to 09-Apr-2017 @ 20:00 Priority Level: 4 Information: Dog too mainstream Tags: 
+**Expected**: Edited Task: Walk the cat Deadline: 09-Apr-2017 @ 18:00 to 09-Apr-2017 @ 20:00 Priority Level: 4 Information: Dog too mainstream Tags:
 
 ### Delete Command: `delete`
 15. **Command**: `delete 1`
@@ -67,7 +67,7 @@
 
 ##### _undo-add_
 18. **Command**: `add todo d/24 dec 2016`
-**Expected**: New Task added: todo Deadline: 24-Dec-2016 @ 00:05 Priority Level:  Information:  Tags: 
+**Expected**: New Task added: todo Deadline: 24-Dec-2016 @ 00:05 Priority Level:  Information:  Tags:
 **Command**: `undo`
 **Expected**: Last action undone
 
@@ -77,7 +77,7 @@
 
 ##### _undo-edit_
 20. **Command**: `edit 1 i/information p/4`
-**Expected**: Edited Task: todo Deadline: 24-Dec-2016 @ 00:05 Priority Level: 4 Information: information Tags: 
+**Expected**: Edited Task: todo Deadline: 24-Dec-2016 @ 00:05 Priority Level: 4 Information: information Tags:
 **Command**: `undo`
 **Expected**: Last action undone
 
@@ -117,11 +117,11 @@
 ### Complete Command: `complete`
 
 29. **Command**: “complete 6”
-**Expected**: Task completed: Walk the cat Deadline: 09-Apr-2017 @ 18:00 to 09-Apr-2017 @ 20:00 Priority Level: 4 Information: Dog too mainstream Tags: 
+**Expected**: Task completed: Walk the cat Deadline: 09-Apr-2017 @ 18:00 to 09-Apr-2017 @ 20:00 Priority Level: 4 Information: Dog too mainstream Tags:
 
 ### Uncomplete Command: `uncomplete`
 30. **Command**: “uncomplete 6”
-**Expected**: Task uncompleted: Walk the cat Deadline: 09-Apr-2017 @ 18:00 to 09-Apr-2017 @ 20:00 Priority Level: 4 Information: Dog too mainstream Tags: 
+**Expected**: Task uncompleted: Walk the cat Deadline: 09-Apr-2017 @ 18:00 to 09-Apr-2017 @ 20:00 Priority Level: 4 Information: Dog too mainstream Tags:
 
 ### Deletecompleted Command: `deletecompleted`
 31. **Command**: “deletecompleted 4”
