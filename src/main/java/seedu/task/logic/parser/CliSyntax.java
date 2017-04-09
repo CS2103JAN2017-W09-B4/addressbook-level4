@@ -18,5 +18,9 @@ public class CliSyntax {
     /* Patterns definitions */
     public static final Pattern KEYWORDS_ARGS_FORMAT =
             Pattern.compile("(?<keywords>\\S+(?:\\s+\\S+)*)"); // one or more keywords separated by whitespace
-
+    //@@author A0141928B
+    public static final Pattern ABSOLUTE_PATH_ARGS_FORMAT =
+            Pattern.compile("(?!.*\\\\\\\\)([A-Z|a-z]:\\\\[^*|\"<>?\\n]*)([^\\\\/:*|\"<>?\\n]\\.xml)");
+    public static final Pattern RELATIVE_PATH_ARGS_FORMAT =
+            Pattern.compile("(?!.*//)([^*|\\\"<>?\\n]*)([^\\\\\\/:*|\\\"<>?\\n]\\.xml)");
 }

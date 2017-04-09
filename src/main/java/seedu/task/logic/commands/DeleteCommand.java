@@ -24,9 +24,10 @@ public class DeleteCommand extends Command {
             + "Parameters: INDEX (must be a positive integer) [" + TO_INDICATOR + " SECOND_INDEX]\n"
             + "Example: " + COMMAND_WORD + " 1\n"
             + "or: " + COMMAND_WORD + " 1 " + TO_INDICATOR + " 5\n";
-    //@@author
 
     public static final String MESSAGE_DELETE_TASK_SUCCESS = "Deleted Task: %1$s";
+    public static final String MESSAGE_DELETE_TASKS_SUCCESS = "Deleted Tasks:\n";
+    //@@author
 
     public final int targetIndex;
     public final int times;
@@ -41,7 +42,7 @@ public class DeleteCommand extends Command {
     public CommandResult execute() throws CommandException {
 
         UnmodifiableObservableList<ReadOnlyTask> lastShownList = model.getFilteredTaskList();
-        String SubsetDeleted = "Deleted Tasks:\n";
+        String subsetDeleted = MESSAGE_DELETE_TASKS_SUCCESS;
 
         //@@author A0139322L
         if (times == 0) {
@@ -92,9 +93,9 @@ public class DeleteCommand extends Command {
 
                     model.deleteTask(taskToDelete);
                     if (i == times - 1) {
-                        SubsetDeleted = SubsetDeleted + String.format("%1$s", taskToDelete);
+                        subsetDeleted = subsetDeleted + String.format("%1$s", taskToDelete);
                     } else {
-                        SubsetDeleted = SubsetDeleted + String.format("%1$4s,\n", taskToDelete);
+                        subsetDeleted = subsetDeleted + String.format("%1$s,\n", taskToDelete);
                     }
                 } catch (TaskNotFoundException pnfe) {
                     assert false : "The target task(s) cannot be missing";
@@ -104,7 +105,7 @@ public class DeleteCommand extends Command {
             Integer t = new Integer(times);
             gStack.getUndoStack().push(t);
 
-            return new CommandResult(SubsetDeleted);
+            return new CommandResult(subsetDeleted);
         }
     }
         //@@author
