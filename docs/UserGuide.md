@@ -18,12 +18,15 @@ By : `Miao Ling` , `Ian` , `Qi Xiang` and `Dylan` - `[W09-B4]` Since : `Feb 2017
 > 3.8. [Deleting a completed task](#38-deleting-a-completed-task-deletecompleted)<br>
 > 3.9. [Searching for tasks](#39-searching-for-tasks-find)<br>
 > 3.10. [Searching for tags](#310-searching-for-tags-findtag)<br>
-> 3.11. [Undo-ing previous action](#311-undo-ing-previous-action-undo)<br>
-> 3.12. [Redo-ing previous action](#312-redo-ing-previous-action-redo)<br>
-> 3.13. [Get previous command](#313-get-previous-command-)<br>
-> 3.14. [Get next command](#314-get-next-command-)<br>
-> 3.15. [Clearing the task manager](#315-clearing-the-task-manager-clear)<br>
-> 3.16. [Saving the task manager](#316-saving-the-task-manager-save)<br>
+> 3.11. [Finding high priority tasks](#311-finding-high-priority-tasks-important)<br>
+> 3.12. [Finding upcoming tasks](#312-finding-upcoming-tasks-upcoming)<br>
+> 3.13. [Finding overdue tasks](#313-finding-overdue-tasks-overdue)<br>
+> 3.14. [Undo-ing previous action](#314-undo-ing-previous-action-undo)<br>
+> 3.15. [Redo-ing previous action](#315-redo-ing-previous-action-redo)<br>
+> 3.16. [Get previous command](#316-get-previous-command-)<br>
+> 3.17. [Get next command](#317-get-next-command-)<br>
+> 3.18. [Clearing the task manager](#318-clearing-the-task-manager-clear)<br>
+> 3.19. [Saving the task manager](#319-saving-the-task-manager-save)<br>
 4. [FAQ](#4-faq)
 5. [Command Summary](#5-command-summary)
 
@@ -180,59 +183,79 @@ Example:
 
 ### 3.9. Searching for tasks: `find`
 
-Searches for tasks based on keywords that you want.<br>
+Searches for tasks based on the keywords that you specify.<br>
 Format: `find KEYWORD`
 > No special characters such as ASCII whitespace is allowed.<br>
 > There will be a list of tasks shown that contains the stated `KEYWORD`.
-> In cases whereby user forgets the exact `KEYWORD`, doTASK will generate a near match search.
+> In cases whereby user forgets the exact `KEYWORD`, or makes typographical errors, doTASK will generate a near match search.
 
 Examples:<br>
-> User wants to find a task with potato in the task name.<br>
-* `find potato`
-> User doesn't know the exact task name (there exists a task with task name : potato).<br>
-* `find pot`
+> User wants to find a task with presentation in the task name (there exists a task with task name : presentation).<br>
+* `find presentation`
+> User doesn't sure of the exact task name.<br>
+* `find present`
+> User accidentally typed an extra character, or missing a character.<br>
+* `find presentations`
+> User accidentally swapped two characters during typing.<br>
+* `find presentatoin`
 
 ### 3.10. Searching for tags: `findtag`
 
 Searches for tasks with the specified tag.<br>
 Format: `findtag TAGS`
 
-Example:<br>
-> User wants to find the tasks tagged with `Work`
-* `findtag Work`
+Examples:<br>
+> User wants to find the tasks tagged with `School`.<br>
+* `findtag School`
 
-### 3.11. Undo-ing previous action: `undo`
+### 3.11. Finding high priority tasks: `important`
+
+Searches for tasks based on the highest priority level (1).<br>
+Format: `important`
+
+### 3.12. Finding upcoming tasks: `upcoming`
+
+Searches for tasks that need to be completed within the next 24 hours.<br>
+Format: `upcoming`
+> Events which fall within the time period will also be displayed.
+
+### 3.13. Finding overdue tasks: `overdue`
+
+Searches for tasks that have not been completed by the given deadline.<br>
+Format: `overdue`
+
+### 3.14. Undo-ing previous action: `undo`
 
 Reverses previous action that you've made.<br>
 Format: `undo`
 > The command last executed will be reversed.
 > Only 1 command will be reversed at a time.
 
-### 3.12. Redo-ing previous action: `redo`
+### 3.15. Redo-ing previous action: `redo`
 
 Reverses previous `undo` that you've made.<br>
 Format: `redo`
 > Any previous `undo` will be reversed, in successive order.
 
-### 3.13. Get previous command: <kbd>↑</kbd>
+### 3.16. Get previous command: <kbd>↑</kbd>
 
 Retrieve the previous command entered, and replaces your text field with the previous command.<br>
 Format: Up arrow key
 > You can retrieve earlier commands from your use session by pressing <kbd>↑</kbd> again and again.
 
-### 3.14. Get next command: <kbd>↓</kbd>
+### 3.17. Get next command: <kbd>↓</kbd>
 
 Retrieve the next command entered, and replaces your text field with the next command.<br>
 Format: Down arrow key
 > You can retrieve later commands from your use session by pressing <kbd>↓</kbd> again and again.
 
-### 3.15. Clearing the task manager: `clear`
+### 3.18. Clearing the task manager: `clear`
 
 Clears the in-app memory of the task manager.<br>
 Format: `clear`
 > You can undo a clear command if it was accidentally keyed in.
 
-### 3.16. Saving the task manager: `save`
+### 3.19. Saving the task manager: `save`
 
 Saves the task manager data to the .xml file specified by you.<br>
 Format: `save PATH_TO_FILE/FILE_NAME.xml`
@@ -292,6 +315,12 @@ Examples:
 
 * **Find tasks related to tag** : `findtag`<br>
 	e.g. `findtag Work`
+
+* **Finding high priority tasks** : `important`<br>
+
+* **Finding upcoming tasks** : `upcoming`<br>
+
+* **Finding overdue tasks** : `overdue`<br>
 
 * **Undo previous action** : `undo`<br>
 
