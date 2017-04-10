@@ -34,7 +34,7 @@ By : `Miao Ling` , `Ian` , `Qi Xiang` and `Dylan` - `[W09-B4]` Since : `Feb 2017
 
 ## 1. Introduction
 
-Our application doTASK helps to improve your productivity and accountability in managing your daily activities. The main feature of our application is its
+Our application, doTASK, helps to improve your productivity and accountability in managing your daily activities. The main feature of our application is its
 prioritisation framework, which lets you focus on the important things. This user guide will provide you with the basic information you'll need in setting
 up doTASK, as well as guide you on how to use it to make you more efficient in prioritising your tasks.
 
@@ -99,11 +99,6 @@ Format: `add TASK_NAME [p/PRIORITY_LEVEL]`<br>
 
 Tasks will be colour-coded based on its priority level.
   > <img src="images/priority_colours.png">
-* Tasks with a `PRIORITY_LEVEL` of **1** will have a **red** border.
-* Tasks with a `PRIORITY_LEVEL` of **2** will have an **orange** border.
-* Tasks with a `PRIORITY_LEVEL` of **3** will have a **blue** border.
-* Tasks with a `PRIORITY_LEVEL` of **4** will have a **green** border.
-* Tasks with no `PRIORITY_LEVEL` specified will have a **gray** border.
 
 Example:
 > I want to buy a packet of milk. Highest priority as it is urgent.<br>
@@ -111,17 +106,16 @@ Example:
 
 #### 3.2.3. Adds a task with `DEADLINE`. <br>
 Format: `add TASK_NAME [d/DEADLINE]`<br>
-`DEADLINE` can be keyed in various methods. The user should read the following guidelines before moving on.<br>
+`DEADLINE` can be keyed in through various methods. The user should read the following guidelines before moving on.<br>
    > * `DEADLINE` should be entered in the format of "date month", "month date", "date month year" or "month date year". <br>
    > * If no year is specified, the current year of the system will be used as the year of the deadline.<br>
    > * The month should be spelled out either in full or with the general 3 letter naming convention.<br>
    > * There are abbreviated forms allowed, such as today/tomorrow/this monday.<br>
-   > * Do not use abbreviated forms for events, be more specific about the date.<br>
    > * Tasks with deadlines will be complemented with reminders, so you won't forget to do them!
 
 Examples:
 > I want to buy a packet of milk by 17 March 2017.
-* add Buy Milk d/17 Mar 2017<br>
+* add Buy Milk d/17 Mar 2017
 > I am heading to Japan from 18 March 2017 to 30 March 2017
 * add Japan trip d/18 mar 2017 to 30 mar 2017
 
@@ -143,11 +137,11 @@ Examples:
 
 ### 3.3. Listing the tasks: `list`
 
-Shows a list of all the tasks in the task manager.<br>
+Shows you a list of all the tasks in the task manager.<br>
 Format: `list`
 
 ### 3.4. Editing a task: `edit`
-Edits an existing task in the task manager.<br>
+Allows you to edit an existing task in the task manager.<br>
 Format: `edit i/INDEX [n/TASK_NAME] [d/DEADLINE] [p/PRIORITY_LEVEL] [i/ANY_INFO] [t/TAGS]...`
 
 > * Edits the task as denoted by the `INDEX` digit as shown on the screen. The `INDEX` must be a positive integer, e.g. 1, 2, 3, ...
@@ -160,7 +154,7 @@ Examples:
 * `edit i/4 n/Exercise`
 
 ### 3.5. Deleting a task: `delete`
-Deletes the specified task in the "doingTASKS" list.<br>
+Allows you to delete the specified task in the "doingTASKS" list.<br>
 Format: `delete INDEX_NUMBER`
 
 > The task labelled `INDEX_NUMBER` will be deleted from the "doingTASKS" list.<br>
@@ -214,18 +208,18 @@ Format: `find KEYWORD`
 > In cases whereby user forgets the exact `KEYWORD`, or makes typographical errors, doTASK will generate a near match search.
 
 Examples:<br>
-> User wants to find a task with presentation in the task name (there exists a task with task name : presentation).<br>
+> User wants to find a task with `presentation` in the task name (there exists a task with task name : presentation).<br>
 * `find presentation`
-> User isn't sure of the exact task name.<br>
+> User is not sure of the exact task name.<br>
 * `find present`
-> User accidentally typed an extra character, or missing a character.<br>
+> User accidentally typed an extra character, or missed a character.<br>
 * `find presentations`
-> User accidentally swapped two characters during typing.<br>
+> User accidentally swapped two characters while typing.<br>
 * `find presentatoin`
 
 ### 3.10. Searching for tags: `findtag`
 
-Searches for tasks with the specified tag.<br>
+Searches for tasks with the tag that you specify.<br>
 Format: `findtag TAGS`
 
 Examples:<br>
@@ -239,7 +233,7 @@ Format: `important`
 
 ### 3.12. Finding upcoming tasks: `upcoming`
 
-Searches for tasks that need to be completed within the next 24 hours.<br>
+Searches for tasks that you need to complete within the next 24 hours.<br>
 Format: `upcoming`
 > Events which fall within the time period will also be displayed.
 
@@ -250,26 +244,26 @@ Format: `overdue`
 
 ### 3.14. Undo-ing previous action: `undo`
 
-Reverses previous action that you've made.<br>
+Reverses the previous action that you have made.<br>
 Format: `undo`
 > The command last executed will be reversed.
 > Only 1 command will be reversed at a time.
 
 ### 3.15. Redo-ing previous action: `redo`
 
-Reverses previous `undo` that you've made.<br>
+Reverses the previous `undo` that you have made.<br>
 Format: `redo`
 > Any previous `undo` will be reversed, in successive order.
 
 ### 3.16. Get previous command: <kbd>↑</kbd>
 
-Retrieve the previous command entered, and replaces your text field with the previous command.<br>
+Retrieves the previous command entered, and replaces your text field with the previous command.<br>
 Format: Up arrow key
 > You can retrieve earlier commands from your use session by pressing <kbd>↑</kbd> again and again.
 
 ### 3.17. Get next command: <kbd>↓</kbd>
 
-Retrieve the next command entered, and replaces your text field with the next command.<br>
+Retrieves the next command entered, and replaces your text field with the next command.<br>
 Format: Down arrow key
 > You can retrieve later commands from your use session by pressing <kbd>↓</kbd> again and again.
 
@@ -281,7 +275,7 @@ Format: `clear`
 
 ### 3.19. Saving the task manager: `save`
 
-Saves the task manager data to the .xml file specified by you.<br>
+Saves the task manager data to the .xml file that you specify.<br>
 Format: `save PATH_TO_FILE/FILE_NAME.xml`
 > Your file name must have the extension `.xml`.<br>
 > If you did not specify a path, the default path is `data/taskManager.xml`.<br>
