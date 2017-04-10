@@ -6,6 +6,8 @@ By : `Miao Ling` , `Ian` , `Qi Xiang` and `Dylan` - `[W09-B4]` Since : `Feb 2017
 
 
 1. [Introduction](#1-introduction)
+> 1.1. [Overview of doTASK](#11-overview-of-dotask)<br>
+> 1.2. [Overview of tasks](#12-overview-of-tasks)<br>
 2. [Quick Start](#2-quick-start)
 3. [Features](#3-features)
 > 3.1. [Viewing Help](#31-viewing-help-help)<br>
@@ -35,6 +37,12 @@ By : `Miao Ling` , `Ian` , `Qi Xiang` and `Dylan` - `[W09-B4]` Since : `Feb 2017
 Our application doTASK helps to improve your productivity and accountability in managing your daily activities. The main feature of our application is its
 prioritisation framework, which lets you focus on the important things. This user guide will provide you with the basic information you'll need in setting
 up doTASK, as well as guide you on how to use it to make you more efficient in prioritising your tasks.
+
+### 1.1. Overview of doTASK
+> <img src="images/doTASK_overview.jpg">
+
+### 1.2. Overview of tasks
+> <img src="images/task_overview.jpg">
 
 ## 2. Quick Start
 
