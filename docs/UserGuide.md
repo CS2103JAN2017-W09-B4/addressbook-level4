@@ -354,3 +354,5 @@ Examples:
 * **Clear task manager** : `clear`
 
 * **Save data to file** : `save PATH_TO_FILE/FILE_NAME.xml`<br>
+	e.g. `save todo/myTasks.xml`<br>
+	e.g. `save C:\Users\jimlim\Documents\todo.xml`
