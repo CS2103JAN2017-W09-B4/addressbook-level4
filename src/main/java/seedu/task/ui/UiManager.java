@@ -1,6 +1,5 @@
 package seedu.task.ui;
 
-import java.io.File;
 import java.util.logging.Logger;
 
 import com.google.common.eventbus.Subscribe;
@@ -69,13 +68,19 @@ public class UiManager extends ComponentManager implements Ui {
      * Load all the fonts in the resources/fonts folder
      */
     public void loadFonts() {
-        File[] fonts = new File("src/main/resources/fonts").listFiles(); //Get all files in the folder
+
+        Font.loadFont(getClass().getResourceAsStream("/fonts/BlueHighway-regular.ttf"), 100);
+        Font.loadFont(getClass().getResourceAsStream("/fonts/Code New Roman.otf"), 100);
+        Font.loadFont(getClass().getResourceAsStream("/fonts/Existence-Light.otf"), 100);
+        Font.loadFont(getClass().getResourceAsStream("/fonts/GelPenUpright.ttf"), 100);
+
+        /*File[] fonts = new File("src/main/resources/fonts").listFiles(); //Get all files in the folder
 
         if (fonts != null) {
             for (File font : fonts) {
                 Font.loadFont(getClass().getResourceAsStream("/fonts/" + font.getName()), 100);
             }
-        }
+        }*/
     }
     //@@author
 
