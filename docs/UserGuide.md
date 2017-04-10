@@ -111,11 +111,12 @@ Format: `add TASK_NAME [d/DEADLINE]`<br>
    > * If no year is specified, the current year of the system will be used as the year of the deadline.<br>
    > * The month should be spelled out either in full or with the general 3 letter naming convention.<br>
    > * There are abbreviated forms allowed, such as today/tomorrow/this monday.<br>
+   > * Do not use abbreviated forms for events, be more specific about the date.<br>
    > * Tasks with deadlines will be complemented with reminders, so you won't forget to do them!
 
 Examples:
 > I want to buy a packet of milk by 17 March 2017.
-* add Buy Milk d/17 Mar 2017
+* add Buy Milk d/17 Mar 2017<br>
 > I am heading to Japan from 18 March 2017 to 30 March 2017
 * add Japan trip d/18 mar 2017 to 30 mar 2017
 
