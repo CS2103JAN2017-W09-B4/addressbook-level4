@@ -1,14 +1,19 @@
 # A. Steps to load the sample data
-1. Navigate to the doTASK folder
+1. Navigate to the location where doTASK is in your locale computer.
+2. Create a folder named "data".
+3. Transfer SampleData.xml to the "data" folder.
+4. Within the "data" folder, rename SampleData.xml to taskManager.xml
+5. Launch doTASK.jar
 
 # B. Testing
 
 ### Pointers to take note for expected output
-> *current date* and *current time* refers to the current date/time by the user’s local machine.
+> *current date + INDEX day* and *current time* refers to the current date/time by the user’s local machine.
+> INDEX refers to the number of days to be added to the current date.
 
 ### Add Command: `add`
 1. **Command**: `add Kayaking at Kallang d/tomorrow at 2pm`<br>
-**Expected**: New Task added: Kayaking at Kallang Deadline: *current date* @ 14:00 Priority Level:  Information:  Tags:
+**Expected**: New Task added: Kayaking at Kallang Deadline: *current date + 1 day* @ 14:00 Priority Level:  Information:  Tags:
 
 2. **Command**: `add Walk the dog d/today 6pm to 8pm p/4`<br>
 **Expected**: New Task added: Walk the dog Deadline: *current date* @ 18:00 to *current date* @ 20:00 Priority Level: 4 Information:  Tags:
@@ -20,7 +25,7 @@
 **Expected**: New Task added: Dental Appointment Deadline: 26-May-2017 @ 16:00 Priority Level: 1 Information: KTPH Tags: [Appointment]
 
 5. **Command**: `add Tidy up the house d/today to tomorrow t/Chore`<br>
-**Expected**: New Task added: Tidy up the house Deadline: 09-Apr-2017 @ *current time* to 10-Apr-2017 @ *current time* Priority Level:  Information:  Tags: [Chore]
+**Expected**: New Task added: Tidy up the house Deadline: *current date* @ *current time* to *current date + 1 day* @ *current time* Priority Level:  Information:  Tags: [Chore]
 
 6. **Command**: `add Remind mum about spoilt kettle t/Home`<br>
 **Expected**: New Task added: Remind mum about spoilt kettle Deadline:  Priority Level:  Information:  Tags: [Home]
