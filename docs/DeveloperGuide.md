@@ -643,6 +643,22 @@ Cons:
 * No calendar
 * No progress chart to indicate the amount of tasks completed
 
+**Priority Matrix**
+
+Author: Qixiang
+
+Pros:
+
+* The 2 by 2 priority matrix layout provides a framework for prioritisation, which let the user focus on the right things.
+* Project management feature which allows better collaboration with the team.
+* The user is able to delegate tasks to different group members conveniently.
+* Able to link to different email accounts (such as Gmail) and calendars (such as iOS reminders).
+* Advanced filtering which allows the user to sort tasks by the team member, status or date.
+
+Cons:
+
+* It does not have a progress report feature which let the user track improvement over time.
+* The 2 by 2 matrix design may not appeal to everyone because some users may still prefer the conventional way of listing the tasks.
 
 **Wunderlist**
 
