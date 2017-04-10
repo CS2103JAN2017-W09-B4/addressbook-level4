@@ -186,13 +186,13 @@ Format: `find KEYWORD`
 > In cases whereby user forgets the exact `KEYWORD`, or makes typographical errors, doTASK will generate a near match search.
 
 Examples:<br>
-> User wants to find a task with presentation in the task name.<br>
+> User wants to find a task with presentation in the task name (there exists a task with task name : presentation).<br>
 * `find presentation`
-> User doesn't sure of the exact task name (there exists a task with task name : presentation).<br>
+> User doesn't sure of the exact task name.<br>
 * `find present`
-> User accidentally typed an extra character, or missing a character (there exists a task with task name : presentation).<br>
+> User accidentally typed an extra character, or missing a character.<br>
 * `find presentations`
-> User accidentally swapped two characters during typing (there exists a task with task name : presentation).<br>
+> User accidentally swapped two characters during typing.<br>
 * `find presentatoin`
 
 ### 3.10. Searching for tags: `findtag`
