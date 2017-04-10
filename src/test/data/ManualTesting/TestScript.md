@@ -2,6 +2,8 @@
 1. Navigate to the location where doTASK is in your locale computer.
 2. Create a folder named "data".
 3. Transfer SampleData.xml to the "data" folder.
+4. Within the "data" folder, rename SampleData.xml to taskManager.xml
+5. Launch doTASK.jar
 
 # B. Testing
 
