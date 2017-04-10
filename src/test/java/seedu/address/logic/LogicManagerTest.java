@@ -368,6 +368,7 @@ public class LogicManagerTest {
         expectedTM.removeTask(fiveTasks.get(3));
         helper.addToModel(model, fiveTasks);
 
+        //testing deletion of tasks 1, 2, and 3
         assertCommandSuccess("delete 2-4",
                 String.format(DeleteCommand.MESSAGE_DELETE_TASKS_SUCCESS
                         + "%1$s,\n" + "%2$s,\n" + "%3$s", task1, task2, task3),
@@ -388,11 +389,13 @@ public class LogicManagerTest {
 
         helper.addToModel(model, fiveTasks);
 
+        //test for delete command
         assertCommandSuccess("dElETe 2",
                 String.format(DeleteCommand.MESSAGE_DELETE_TASK_SUCCESS, task1),
                 expectedTM,
                 expectedTM.getTaskList());
 
+        //test for list command
         assertCommandSuccess("LisT",
                 ListCommand.MESSAGE_SUCCESS,
                 expectedTM,
@@ -400,12 +403,14 @@ public class LogicManagerTest {
 
         expectedTM.addTask(toBeAdded);
 
+        //test for add command
         assertCommandSuccess(helper.generateAddCaseInsensitiveCommand1(toBeAdded),
                 String.format(AddCommand.MESSAGE_SUCCESS, toBeAdded),
                 expectedTM,
                 expectedTM.getTaskList());
 
-        System.out.println(helper.generateAddCommand(task1));
+        // add commands are the same; this tests that a duplicate task is added
+        System.out.println(helper.generateAddCommand(toBeAdded));
         assertCommandFailure(helper.generateAddCaseInsensitiveCommand2(toBeAdded),
                 AddCommand.MESSAGE_DUPLICATE_TASK);
     }
