@@ -6,6 +6,8 @@ By : `Miao Ling` , `Ian` , `Qi Xiang` and `Dylan` - `[W09-B4]` Since : `Feb 2017
 
 
 1. [Introduction](#1-introduction)
+> 1.1. [Overview of doTASK](#11-overview-of-dotask)<br>
+> 1.2. [Overview of tasks](#12-overview-of-tasks)<br>
 2. [Quick Start](#2-quick-start)
 3. [Features](#3-features)
 > 3.1. [Viewing Help](#31-viewing-help-help)<br>
@@ -36,9 +38,25 @@ Our application doTASK helps to improve your productivity and accountability in 
 prioritisation framework, which lets you focus on the important things. This user guide will provide you with the basic information you'll need in setting
 up doTASK, as well as guide you on how to use it to make you more efficient in prioritising your tasks.
 
+### 1.1. Overview of doTASK
+> <img src="images/doTASK_overview.jpg">
+* The `command box` is for you to type in your commands.
+* You can see the results of your command in the `results of command` box. This will tell you if your command was successfully executed, or if your input was incorrect.
+* The `ongoing task list` shows all the tasks that have not ended yet.
+* The `overdue task list` shows all the tasks that are overdue. The tasks in this list correspond to tasks from the `ongoing task list` which have deadlines that have passed. You cannot edit this list. However, you can edit the corresponding task in the `ongoing task list` and the change will be reflected in the `overdue task list` as well.
+* The `completed task list`shows all the tasks which have been marked as completed.
+
+### 1.2. Overview of tasks
+> <img src="images/task_overview.jpg">
+* The `task name` is the name of the task. We recommend having task names that are succint. The number beside the `task name` is the `index` of the task.
+* The gray box contains a `tag`. One task can have multiple tags, or none at all. Tags are a way to categorise your tasks into different groups. We recommend using tags for broad categories like `School` or `Work`, so that you can find them easily later.
+* The smaller text in the box is the `information` of the task. This is for additional information related to the task, that you didn't put in the `task name`.
+* The `border colour` of this example task is red. This is an example of a task with high priority. The border colour of each task corresponds to its priority level. You can refer to [3.2.2](#322-adds-a-task-with-priority_level-) for the breakdown of the border colours and corresponding priority levels.
+* The `deadline` is when the task is due, which consists of the date and time (in 24 hour format) it is due. If the deadline of a task is over, and it is not marked as complete, it will be duplicated in the `overdue task list`.
+
 ## 2. Quick Start
 
-1. Ensure you have Java version `1.8.0_60` or later installed in your Computer.
+1. Ensure you have Java version `1.8.0_121` or later installed in your Computer.
 
 2. Download the latest version of `doTASK.jar` from [releases] tab.
 
@@ -47,7 +65,7 @@ up doTASK, as well as guide you on how to use it to make you more efficient in p
 4. Double-click on the file to start the application. The GUI should appear in a few seconds.<br>
 > <img src="images/startup.png" width="600">
 
-5. Get started by adding your first task that you have in mind! Refer to **3. Features** for further instructions.<br>
+5. Get started by adding your first task that you have in mind! Refer to [3.2](#32-adding-a-task-add) for further instructions on how to add a task.<br>
 
 ## 3. Features
 
@@ -64,7 +82,7 @@ Format: `help`
 
 ### 3.2. Adding a task: `add`
 There are a total of 5 parameters : `TASK_NAME` , `PRIORITY_LEVEL` , `DEADLINE` , `INFORMATION`, `TAGS`.<br>
-> `taskname` is mandatory. The rest of the parameters are optional.<br>
+> `TASK_NAME` is mandatory. The rest of the parameters are optional.<br>
 > User can add a task with any of the optional parameters, mentioned from [3.2.2](#322-adds-a-task-with-priority_level-) - [3.2.5](#325-adds-a-task-with-tags).
 
 #### 3.2.1. Adds a floating task.<br>
@@ -274,6 +292,9 @@ Examples:
 
 ## 4. FAQ
 
+**Q**: Can a task with no deadline be overdue?<br>
+**A**: Tasks with no deadlines will never be overdue, and will never be reflected in the `overdue task list`.
+
 **Q**: How do I save my data in doTASK?<br>
 **A**: Your data is automatically saved every time you do something that modifies it (e.g. adding, editing, deleting tasks). If you would like to save your data to a specific directory, use the [save command](#313-saving-the-task-manager-save).
 
@@ -333,3 +354,5 @@ Examples:
 * **Clear task manager** : `clear`
 
 * **Save data to file** : `save PATH_TO_FILE/FILE_NAME.xml`<br>
+	e.g. `save todo/myTasks.xml`<br>
+	e.g. `save C:\Users\jimlim\Documents\todo.xml`
