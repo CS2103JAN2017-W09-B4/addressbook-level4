@@ -1,5 +1,7 @@
 # A. Steps to load the sample data
-1. Navigate to the doTASK folder
+1. Navigate to the location where doTASK is in your locale computer.
+2. Create a folder named "data".
+3. Transfer SampleData.xml to the "data" folder.
 
 # B. Testing
 
