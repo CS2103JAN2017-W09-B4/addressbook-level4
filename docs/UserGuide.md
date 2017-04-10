@@ -18,9 +18,9 @@ By : `Miao Ling` , `Ian` , `Qi Xiang` and `Dylan` - `[W09-B4]` Since : `Feb 2017
 > 3.8. [Deleting a completed task](#38-deleting-a-completed-task-deletecompleted)<br>
 > 3.9. [Searching for tasks](#39-searching-for-tasks-find)<br>
 > 3.10. [Searching for tags](#310-searching-for-tags-findtag)<br>
-> 3.11. [Finding high priority tasks](#311-finding-high-priority-tasks)<br>
-> 3.12. [Finding upcoming tasks](#312-finding-upcoming-tasks)<br>
-> 3.13. [Finding overdue tasks](#313-finding-overdue-tasks)<br>
+> 3.11. [Finding high priority tasks](#311-finding-high-priority-tasks-important)<br>
+> 3.12. [Finding upcoming tasks](#312-finding-upcoming-tasks-upcoming)<br>
+> 3.13. [Finding overdue tasks](#313-finding-overdue-tasks-overdue)<br>
 > 3.14. [Undo-ing previous action](#314-undo-ing-previous-action-undo)<br>
 > 3.15. [Redo-ing previous action](#315-redo-ing-previous-action-redo)<br>
 > 3.16. [Get previous command](#316-get-previous-command-)<br>
