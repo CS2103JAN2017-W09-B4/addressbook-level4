@@ -205,7 +205,7 @@ Searches for tasks with the specified tag.<br>
 Format: `findtag TAGS`
 
 Examples:<br>
-> User wants to find all task that related to the tag "School".<br>
+> User wants to find the tasks tagged with `School`.<br>
 * `findtag School`
 
 ### 3.11. Finding high priority tasks: `important`
