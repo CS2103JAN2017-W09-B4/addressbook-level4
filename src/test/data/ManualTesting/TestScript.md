@@ -123,7 +123,6 @@
 
 ### Deletecompleted Command: `deletecompleted`
 31. **Command**: `deletecompleted 4`<br>
-
 **Expected**: Completed Task deleted: Do up presentation for GET1006 Deadline: 30-Mar-2017 @ 23:59 Priority Level: 1 Information:  Tags: [School]
 
 ### Command History: Keyboard `up` and `down` arrow
@@ -135,3 +134,11 @@
 eg: Current time = 1300hrs.<br>
 **Command**: `add remind me about this task d/0958hrs`<br>
 **Expected**: A reminder will be prompted every 2 mins via the windows system tray bar
+
+### Upcoming Command: `upcoming`
+34. **Command**: `upcoming`<br>
+**Expected**: Listed all the upcoming tasks!
+
+### Filtering High Priority Command: `important`
+35. **Command**: `important`<br>
+**Expected**: Listed all the high priority tasks!
