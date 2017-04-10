@@ -40,6 +40,11 @@ up doTASK, as well as guide you on how to use it to make you more efficient in p
 
 ### 1.1. Overview of doTASK
 > <img src="images/doTASK_overview.jpg">
+* The `command box` is for you to type in your commands.
+* You can see the results of your command in the `results of command` box. This will tell you if your command was successfully executed, or if your input was incorrect.
+* The `ongoing task list` shows all the tasks that have not ended yet.
+* The `overdue task list` shows all the tasks that are overdue. The tasks in this list correspond to tasks from the `ongoing task list` which have deadlines that have passed. You cannot edit this list. However, you can edit the corresponding task in the `ongoing task list` and the change will be reflected in the `overdue task list` as well.
+* The `completed task list`shows all the tasks which have been marked as completed.
 
 ### 1.2. Overview of tasks
 > <img src="images/task_overview.jpg">
