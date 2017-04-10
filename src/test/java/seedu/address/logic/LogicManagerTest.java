@@ -376,9 +376,10 @@ public class LogicManagerTest {
     }
 
     @Test
-    public void execute_command_noCaseRestriction() throws Exception {
+    public void execute_command_caseInsensitivity() throws Exception {
         TestDataHelper helper = new TestDataHelper();
         List<Task> fiveTasks = helper.generateTaskList(5);
+        Task toBeAdded = helper.task1();
 
         TaskManager expectedTM = helper.generateTaskManager(fiveTasks);
 
@@ -396,6 +397,17 @@ public class LogicManagerTest {
                 ListCommand.MESSAGE_SUCCESS,
                 expectedTM,
                 expectedTM.getTaskList());
+
+        expectedTM.addTask(toBeAdded);
+
+        assertCommandSuccess(helper.generateAddCaseInsensitiveCommand1(toBeAdded),
+                String.format(AddCommand.MESSAGE_SUCCESS, toBeAdded),
+                expectedTM,
+                expectedTM.getTaskList());
+
+        System.out.println(helper.generateAddCommand(task1));
+        assertCommandFailure(helper.generateAddCaseInsensitiveCommand2(toBeAdded),
+                AddCommand.MESSAGE_DUPLICATE_TASK);
     }
 
     //@@author
@@ -519,6 +531,44 @@ public class LogicManagerTest {
 
             return cmd.toString();
         }
+        //@@author A0139322L
+        String generateAddCaseInsensitiveCommand1(Task p) {
+            StringBuffer cmd = new StringBuffer();
+
+            cmd.append("AdD ");
+
+            cmd.append(p.getTaskName().toString());
+            cmd.append(" p/").append(p.getPriority().value);
+            cmd.append(" d/").append(p.getDate().value);
+            cmd.append(" i/").append(p.getInfo().value);
+
+            UniqueTagList tags = p.getTags();
+            for (Tag t: tags) {
+                cmd.append(" t/").append(t.tagName);
+            }
+
+            return cmd.toString();
+        }
+
+        String generateAddCaseInsensitiveCommand2(Task p) {
+            StringBuffer cmd = new StringBuffer();
+
+            cmd.append("aDd ");
+
+            cmd.append(p.getTaskName().toString());
+            cmd.append(" p/").append(p.getPriority().value);
+            cmd.append(" d/").append(p.getDate().value);
+            cmd.append(" i/").append(p.getInfo().value);
+
+            UniqueTagList tags = p.getTags();
+            for (Tag t: tags) {
+                cmd.append(" t/").append(t.tagName);
+            }
+
+            return cmd.toString();
+        }
+
+        //author
 
         /**
          * Generates an TaskManager with auto-generated tasks.
