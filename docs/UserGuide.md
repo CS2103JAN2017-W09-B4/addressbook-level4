@@ -48,6 +48,11 @@ up doTASK, as well as guide you on how to use it to make you more efficient in p
 
 ### 1.2. Overview of tasks
 > <img src="images/task_overview.jpg">
+* The `task name` is the name of the task. We recommend having task names that are succint. The number beside the `task name` is the `index` of the task.
+* The gray box contains a `tag`. One task can have multiple tags, or none at all. Tags are a way to categorise your tasks into different groups. We recommend using tags for broad categories like `School` or `Work`, so that you can find them easily later.
+* The smaller text in the box is the `information` of the task. This is for additional information related to the task, that you didn't put in the `task name`.
+* The `border colour` of this example task is red. This is an example of a task with high priority. The border colour of each task corresponds to its priority level. You can refer to [3.2.2](#322-adds-a-task-with-priority_level-) for the breakdown of the border colours and corresponding priority levels.
+* The `deadline` is when the task is due, which consists of the date and time (in 24 hour format) it is due. If the deadline of a task is over, and it is not marked as complete, it will be duplicated in the `overdue task list`.
 
 ## 2. Quick Start
 
