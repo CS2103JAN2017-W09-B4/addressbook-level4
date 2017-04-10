@@ -52,7 +52,7 @@
 13. **Command**: `edit 48 t/Hobby t/New`<br>
 **Expected**: Edited Task: Learn kayaking over the hols Deadline:  Priority Level:  Information:  Tags: [New][Hobby]
 
-14. **Command**: `edit 6 Walk the cat i/Dog too mainstream`<br>
+14. **Command**: `edit 7 Walk the cat i/Dog too mainstream`<br>
 **Expected**: Edited Task: Walk the cat Deadline: 09-Apr-2017 @ 18:00 to 09-Apr-2017 @ 20:00 Priority Level: 4 Information: Dog too mainstream Tags:
 
 ### Delete Command: `delete`
@@ -119,11 +119,11 @@
 
 
 ### Complete Command: `complete`
-29. **Command**: `complete 6`<br>
+29. **Command**: `complete 7`<br>
 **Expected**: Task completed: Walk the cat Deadline: 09-Apr-2017 @ 18:00 to 09-Apr-2017 @ 20:00 Priority Level: 4 Information: Dog too mainstream Tags:
 
 ### Uncomplete Command: `uncomplete`
-30. **Command**: `uncomplete 6`<br>
+30. **Command**: `uncomplete 7`<br>
 **Expected**: Task uncompleted: Walk the cat Deadline: 09-Apr-2017 @ 18:00 to 09-Apr-2017 @ 20:00 Priority Level: 4 Information: Dog too mainstream Tags:
 
 ### Deletecompleted Command: `deletecompleted`
@@ -134,16 +134,10 @@
 32. **Command**: Cycle through the keyboard `up` and `down` arrow<<br>
 **Expected**: Able to obtain all the commands keyed in from 1 to 31
 
-### Reminder Function 
-33. Add a task with deadline that's 3 hours and 2 minutes earlier than the current time.<br>
-eg: Current time = 1300hrs.<br>
-**Command**: `add remind me about this task d/0958hrs`<br>
-**Expected**: A reminder will be prompted every 2 mins via the windows system tray bar
-
 ### Upcoming Command: `upcoming`
-34. **Command**: `upcoming`<br>
+33. **Command**: `upcoming`<br>
 **Expected**: Listed all the upcoming tasks!
 
 ### Filtering High Priority Command: `important`
-35. **Command**: `important`<br>
+34. **Command**: `important`<br>
 **Expected**: Listed all the high priority tasks!
