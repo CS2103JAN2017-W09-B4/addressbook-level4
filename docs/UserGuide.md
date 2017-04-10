@@ -177,6 +177,10 @@ Format: `deletecompleted INDEX_NUMBER`
 > `INDEX_NUMBER` of tasks is shown according to the "didTASKS" list.<br>
 > The task labelled by `INDEX_NUMBER` in the "didTASKS" list will be permanently removed from the task manager.<br>
 
+Example:
+* `deletecompleted 1`
+> The task indicated by index number 1 in the "didTASKS" list section will be permanently deleted.
+
 ### 3.9. Searching for tasks: `find`
 
 Searches for tasks based on the keywords that you specify.<br>
@@ -199,6 +203,10 @@ Examples:<br>
 
 Searches for tasks with the specified tag.<br>
 Format: `findtag TAGS`
+
+Examples:<br>
+> User wants to find all task that related to the tag "School".<br>
+* `findtag School`
 
 ### 3.11. Finding high priority tasks: `important`
 

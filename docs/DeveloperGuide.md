@@ -86,7 +86,7 @@ Given below is a quick overview of each component.
 > Tip: The `.pptx` files used to create diagrams in this document can be found in the [diagrams](diagrams/) folder.
 > To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose `Save as picture`.
 
-`Main` has only one class called [`MainApp`](../src/main/java/seedu/address/MainApp.java). It is responsible for,
+`Main` has only one class called [`MainApp`](../src/main/java/seedu/task/MainApp.java). It is responsible for,
 
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup method where necessary.
@@ -144,14 +144,14 @@ Author: Lim Miao Ling
 <img src="images/UiClassDiagram.png" width="800"><br>
 _Figure 2.2.1 : Structure of the UI Component_
 
-**API** : [`Ui.java`](../src/main/java/seedu/address/ui/Ui.java)
+**API** : [`Ui.java`](../src/main/java/seedu/task/ui/Ui.java)
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, 'TaskListPanel`,
 `StatusBarFooter`, `BrowserPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files
  that are in the `src/main/resources/view` folder.<br>
- For example, the layout of the [`MainWindow`](../src/main/java/seedu/address/ui/MainWindow.java) is specified in
+ For example, the layout of the [`MainWindow`](../src/main/java/seedu/task/ui/MainWindow.java) is specified in
  [`MainWindow.fxml`](../src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
@@ -167,7 +167,7 @@ Author: Dylan Sng
 <img src="images/LogicClassDiagram.png" width="800"><br>
 _Figure 2.3.1 : Structure of the Logic Component_
 
-**API** : [`Logic.java`](../src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](../src/main/java/seedu/task/logic/Logic.java)
 
 1. `Logic` uses the `Parser` class to parse the user command.
 2. This results in a `Command` object which is executed by the `LogicManager`.
@@ -186,7 +186,7 @@ Author: Xu Qixiang
 <img src="images/ModelClassDiagram.png" width="800"><br>
 _Figure 2.4.1 : Structure of the Model Component_
 
-**API** : [`Model.java`](../src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](../src/main/java/seedu/task/model/Model.java)
 
 The `Model`,
 
@@ -203,7 +203,7 @@ Author: Ian Tan
 <img src="images/StorageClassDiagram.png" width="800"><br>
 _Figure 2.5.1 : Structure of the Storage Component_
 
-**API** : [`Storage.java`](../src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](../src/main/java/seedu/task/storage/Storage.java)
 
 The `Storage` component,
 
@@ -212,7 +212,7 @@ The `Storage` component,
 
 ### 2.6. Common classes
 
-Classes used by multiple components are in the `seedu.addressbook.commons` package.
+Classes used by multiple components are in the `seedu.task.commons` package.
 
 ## 3. Implementation
 
@@ -439,7 +439,7 @@ Use case ends.
 
 2a. The list is empty
 
-> 2a1. doTASK shows an error message <br>
+> 2a1. doTASK shows an error message<br>
   Use case ends
 
 3a. The given index is invalid
@@ -454,7 +454,7 @@ Use case ends.
 1. User requests to list tasks
 2. doTASK shows a list of tasks
 3. User requests to delete a range of tasks in the list
-4. doTASK deletes all tasks in the range
+4. doTASK deletes all tasks in the range<br>
 Use case ends.
 
 **Extensions**
@@ -484,9 +484,8 @@ Use case ends.
 1. User requests to get a list of tasks
 2. doTASK shows a list of tasks
 3. User requests to edit the parameters of a specified task
-4. doTASK edits the task
-
->Use case ends.
+4. doTASK edits the task<br>
+Use case ends.
 
 **Extensions**
 
@@ -504,7 +503,7 @@ Use case ends.
 **MSS**
 
 1. User requests to find a task
-2. doTASK shows a list of tasks related to the keyword, in its name or details
+2. doTASK shows a list of tasks related to the keyword, in its name or details<br>
 Use case ends.
 
 **Extensions**
@@ -518,7 +517,7 @@ Use case ends.
 **MSS**
 
 1. User requests to find tasks with a certain tag
-2. doTASK shows a list of tasks tagged with the tag
+2. doTASK shows a list of tasks tagged with the tag<br>
 Use case ends.
 
 **Extensions**
@@ -534,7 +533,7 @@ Use case ends.
 1. User requests to search for a task
 2. doTask shows a list of tasks related to the keyword
 3. User requests to mark the task as completed
-4. doTASK marks the task as completed
+4. doTASK marks the task as completed<br>
 Use case ends.
 
 **Extensions**
