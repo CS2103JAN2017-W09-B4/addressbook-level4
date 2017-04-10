@@ -56,7 +56,7 @@ up doTASK, as well as guide you on how to use it to make you more efficient in p
 
 ## 2. Quick Start
 
-1. Ensure you have Java version `1.8.0_60` or later installed in your Computer.
+1. Ensure you have Java version `1.8.0_121` or later installed in your Computer.
 
 2. Download the latest version of `doTASK.jar` from [releases] tab.
 
@@ -65,7 +65,7 @@ up doTASK, as well as guide you on how to use it to make you more efficient in p
 4. Double-click on the file to start the application. The GUI should appear in a few seconds.<br>
 > <img src="images/startup.png" width="600">
 
-5. Get started by adding your first task that you have in mind! Refer to **3. Features** for further instructions.<br>
+5. Get started by adding your first task that you have in mind! Refer to [3.2](#32-adding-a-task-add) for further instructions on how to add a task.<br>
 
 ## 3. Features
 
@@ -82,7 +82,7 @@ Format: `help`
 
 ### 3.2. Adding a task: `add`
 There are a total of 5 parameters : `TASK_NAME` , `PRIORITY_LEVEL` , `DEADLINE` , `INFORMATION`, `TAGS`.<br>
-> `taskname` is mandatory. The rest of the parameters are optional.<br>
+> `TASK_NAME` is mandatory. The rest of the parameters are optional.<br>
 > User can add a task with any of the optional parameters, mentioned from [3.2.2](#322-adds-a-task-with-priority_level-) - [3.2.5](#325-adds-a-task-with-tags).
 
 #### 3.2.1. Adds a floating task.<br>
@@ -291,6 +291,9 @@ Examples:
 * `save C:\Users\jimlim\Documents\todo.xml`
 
 ## 4. FAQ
+
+**Q**: Can a task with no deadline be overdue?<br>
+**A**: Tasks with no deadlines will never be overdue, and will never be reflected in the `overdue task list`.
 
 **Q**: How do I save my data in doTASK?<br>
 **A**: Your data is automatically saved every time you do something that modifies it (e.g. adding, editing, deleting tasks). If you would like to save your data to a specific directory, use the [save command](#313-saving-the-task-manager-save).
