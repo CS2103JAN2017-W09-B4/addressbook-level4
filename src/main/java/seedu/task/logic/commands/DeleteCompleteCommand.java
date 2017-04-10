@@ -6,7 +6,7 @@ import seedu.task.logic.commands.exceptions.CommandException;
 import seedu.task.model.task.ReadOnlyTask;
 import seedu.task.model.task.UniqueTaskList.TaskNotFoundException;
 
-//@@author A0139161J
+//@@author A0139322L
 /**
  * Permanently removes the specified task from "didTASKS" list
  */

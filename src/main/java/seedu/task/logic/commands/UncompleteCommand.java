@@ -9,7 +9,7 @@ import seedu.task.model.task.Task;
 import seedu.task.model.task.UniqueTaskList.DuplicateTaskException;
 import seedu.task.model.task.UniqueTaskList.TaskNotFoundException;
 
-//@@author A0139161J
+//@@author A0139322L
 /**
  * Uncompletes a specified task, shifts the specified task from "didTASK" list to "doingTASKS" list
  */

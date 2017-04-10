@@ -56,15 +56,7 @@ public class DeleteCommand extends Command {
             try {
                 GlobalStack gStack = GlobalStack.getInstance();
                 gStack.getUndoStack().push(task); // task that got deleted, to be restored
-                /**Debugging purpose
-                 * System.out.println("Parser Info : " + task.getParserInfo());
-                 * System.out.println("Index = " + index);
-                 * System.out.println("Task added to stack : " + gStack.getUndoStack().peek().toString());
-                 */
                 model.deleteTask(taskToDelete);
-                /**Debugging purpose
-                 * gStack.printStack();
-                 */
                 //@@author
 
             } catch (TaskNotFoundException pnfe) {
