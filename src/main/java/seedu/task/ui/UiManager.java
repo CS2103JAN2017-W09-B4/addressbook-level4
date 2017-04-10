@@ -69,6 +69,12 @@ public class UiManager extends ComponentManager implements Ui {
      * Load all the fonts in the resources/fonts folder
      */
     public void loadFonts() {
+
+        /*Font.loadFont(getClass().getResourceAsStream("/fonts/BlueHighway-Regular"), 100);
+        Font.loadFont(getClass().getResourceAsStream("/fonts/Code New Roman"), 100);
+        Font.loadFont(getClass().getResourceAsStream("/fonts/Existence-Light"), 100);
+        Font.loadFont(getClass().getResourceAsStream("/fonts/GelPenUpright"), 100);*/
+
         File[] fonts = new File("src/main/resources/fonts").listFiles(); //Get all files in the folder
 
         if (fonts != null) {
