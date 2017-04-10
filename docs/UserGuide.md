@@ -99,6 +99,11 @@ Format: `add TASK_NAME [p/PRIORITY_LEVEL]`<br>
 
 Tasks will be colour-coded based on its priority level.
   > <img src="images/priority_colours.png">
+* Tasks with a `PRIORITY_LEVEL` of **1** will have a **red** border.
+* Tasks with a `PRIORITY_LEVEL` of **2** will have an **orange** border.
+* Tasks with a `PRIORITY_LEVEL` of **3** will have a **blue** border.
+* Tasks with a `PRIORITY_LEVEL` of **4** will have a **green** border.
+* Tasks with no `PRIORITY_LEVEL` specified will have a **gray** border.
 
 Example:
 > I want to buy a packet of milk. Highest priority as it is urgent.<br>
@@ -211,7 +216,7 @@ Format: `find KEYWORD`
 Examples:<br>
 > User wants to find a task with presentation in the task name (there exists a task with task name : presentation).<br>
 * `find presentation`
-> User doesn't sure of the exact task name.<br>
+> User isn't sure of the exact task name.<br>
 * `find present`
 > User accidentally typed an extra character, or missing a character.<br>
 * `find presentations`
