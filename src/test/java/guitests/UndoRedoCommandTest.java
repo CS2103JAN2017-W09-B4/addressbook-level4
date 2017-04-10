@@ -47,6 +47,8 @@ public class UndoRedoCommandTest extends TaskManagerGuiTest {
 
     @Test
     public void redo_noPreviousCommands_pass() {
+        GlobalStack gStack = GlobalStack.getInstance();
+        gStack.getRedoStack().removeAllElements();
         commandBox.runCommand("redo");
         assertResultMessage(GlobalStack.MESSAGE_NOTHING_TO_REDO);
     }
