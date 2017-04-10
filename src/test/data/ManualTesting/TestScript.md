@@ -53,7 +53,7 @@
 **Expected**: Edited Task: Learn kayaking over the hols Deadline:  Priority Level:  Information:  Tags: [New][Hobby]
 
 14. **Command**: `edit 7 Walk the cat i/Dog too mainstream`<br>
-**Expected**: Edited Task: Walk the cat Deadline: 09-Apr-2017 @ 18:00 to 09-Apr-2017 @ 20:00 Priority Level: 4 Information: Dog too mainstream Tags:
+**Expected**: Edited Task: Walk the cat Deadline: *current date* @ 18:00 to *current date* @ 20:00 Priority Level: 4 Information: Dog too mainstream Tags:
 
 ### Delete Command: `delete`
 15. **Command**: `delete 1`<br>
